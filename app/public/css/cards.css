@@ -4,6 +4,17 @@
   border-color: white ;
 }
 
+#text-modal {
+  background-color: black;
+  color: white;
+}
 
+#modal-header {
+  background-color: black;
+  color: white;
+}
 
-
+#modal-footer {
+  background-color: black;
+  
+}

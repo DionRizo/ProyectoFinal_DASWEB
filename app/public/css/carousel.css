@@ -26,6 +26,27 @@
   background-size: 100% 100%;
 }
 
+#demotext {
+  color: white;
+  background: black;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+  font-size: 50px;
+  font-weight: bold;
+  }
+
+
+#demotext2 {
+  color: white;
+  background: white;
+  text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+  color: white;
+  background: white;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: black;
+  }
+
+
 
 
 
