@@ -44,8 +44,8 @@
                 placeholder="Crea tu contraseña">
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="password" name="password"
+              <label for="password" class="form-label">Confirmar contraseña:</label>
+              <input type="password" class="form-control" id="confirm-password" name="password"
                 placeholder="Confirma tu contraseña">
             </div>
             <div class="d-flex justify-content-between">
@@ -73,12 +73,12 @@
           <form>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico:</label>
-              <input type="email" class="form-control" id="email" name="email"
+              <input type="email" class="form-control" id="user-email" name="email"
                 placeholder="Ingresa tu correo electrónico registrado">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="password" name="password"
+              <input type="password" class="form-control" id="user-password" name="password"
                 placeholder="Ingresa tu contraseña"> <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
             </div>
             <div class="d-flex justify-content-between">
@@ -93,8 +93,6 @@
   </div>
   <!-- Modal de inicio de sesión -->
 
-
-
   <!-- Modal de Administrador -->
   <div class="modal fade" id="loginModalAdmin" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -107,12 +105,12 @@
           <form>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico:</label>
-              <input type="email" class="form-control" id="email" name="email"
+              <input type="email" class="form-control" id="admin-email" name="email"
                 placeholder="Ingresa tu correo electrónico registrado">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="password" name="password"
+              <input type="password" class="form-control" id="admin-password" name="password"
                 placeholder="Ingresa tu contraseña"> <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
             </div>
             <div class="d-flex justify-content-between">
@@ -196,66 +194,50 @@
   
   -->
 
-
-
-
-
-
-
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <!-- Container wrapper -->
       <div class="container">
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="#"><img id="CinemaSurf-logo" src="../../public/img/favicon.png" alt="CinemaSurf"
+        <a class="navbar-brand" href="index.html"><img id="CinemaSurf-logo" src="../../public/img/favicon.png" alt="CinemaSurf"
             draggable="false" height="30" /></a>
+
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="bi bi-list"></i>
+        </button>
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left links -->
           <ul class="navbar-nav me-3">
             <li class="nav-item">
               <a class="nav-link active d-flex align-items-center" aria-current="page" href="#"><i
-                  class="bi bi-list"></i></i>Menu</a>
+                  class="bi bi-list"></i>Menu</a>
             </li>
           </ul>
           <form class="d-flex align-items-center w-100 form-search">
             <div class="input-group">
-              <button class="btn btn-light dropdown-toggle shadow-0" type="button" data-cs-toggle="dropdown"
-                aria-expanded="false" style="padding-bottom: 0.4rem;">
-                All
+              <button class="btn btn-light dropdown-toggle shadow-0" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false" style="padding-bottom: 0.4rem;"><i class="bi bi-search"></i>
+                Todo
               </button>
               <ul class="dropdown-menu dropdown-menu-dark fa-ul">
                 <li>
-                  <a class="dropdown-item" href="#"><span class="fa-li pe-2"><i class="bi bi-search"></i></span>All</a>
+                  <a class="dropdown-item" href="#"><i class="bi bi-search"></i> Todo</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#"><span class="fa-li pe-2"><i
-                        class="fas fa-film"></i></span>Titles</a>
+                  <a class="dropdown-item" href="#"><i class="bi bi-fire"></i> Acción</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#"><span class="fa-li pe-2"><i class="fas fa-tv"></i></span>TV
-                    Episodes</a>
+                  <a class="dropdown-item" href="#"><i class="bi bi-shield-fill"></i> Aventura</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#"><span class="fa-li pe-2"><i
-                        class="fas fa-user-friends"></i></span>Celebs</a>
+                  <a class="dropdown-item" href="#"><i class="bi bi-emoji-laughing-fill"></i> Comedia</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#"><span class="fa-li pe-2"><i
-                        class="fas fa-building"></i></span>Companies</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"><span class="fa-li pe-2"><i
-                        class="fas fa-key"></i></span>Keywords</a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#"><span class="fa-li pe-2"><i
-                        class="fas fa-search-plus"></i></span>Advanced
-                    search<i class="fas fa-chevron-right ps-2"></i></a>
+                  <a class="dropdown-item" href="#"><i class="bi bi-emoji-frown-fill"></i> Terror</a>
                 </li>
               </ul>
               <input type="search" class="form-control" placeholder="Buscar películas..."
@@ -266,7 +248,7 @@
 
           <ul class="navbar-nav ms-3">
             <li class="nav-item me-3">
-              <a class="nav-link d-flex align-items-center" href="#!" data-bs-toggle="modal"
+              <a class="nav-link d-flex align-items-center" href="admin.html" data-bs-toggle="modal"
                 data-bs-target="#loginModalAdmin">Administrador</a>
             </li>
             <li class="nav-item">
@@ -385,7 +367,7 @@
           </div>
         </div>
       </div>
-      
+
       <br><br><br>
       <div class="mx auto ms-5">
         <h3 style="text-decoration-color:#e8e8b5;">Terror</h3>
