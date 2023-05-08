@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../../public/css/body.css">
   <link rel="stylesheet" href="../../public/css/dark-mode.css">
   <script src="../../public/js/movies.js"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
@@ -27,11 +26,11 @@
   <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel" style="color: black;">Registro de Usuario</h5>
+        <div class="modal-header bg-light">
+          <h5 class="modal-title" id="loginModalLabel">Registro de Usuario</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-light">
           <form>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico:</label>
@@ -63,16 +62,16 @@
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel" style="color: black;">Iniciar sesión</h5>
+        <div class="modal-header bg-light">
+          <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body bg-light">
           <form>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico:</label>
               <input type="email" class="form-control" id="user-email" name="email"
-                placeholder="Ingresa tu correo electrónico registrado">
+                placeholder="Ingresa tu correo electrónico">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña:</label>
@@ -175,7 +174,7 @@
                   class="bi bi-list"></i>Menu</a>
             </li>
           </ul>
-          <form class="d-flex align-items-center w-50 form-search">
+          <form class="d-flex align-items-center w-100 form-search">
             <div class="input-group">
               <button class="btn btn-light dropdown-toggle shadow-0" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false" style="padding-bottom: 0.4rem;"><i class="bi bi-search"></i>
@@ -204,6 +203,16 @@
             <a href="#!" style="color: white;"><i class="bi bi-search ms-2"></i></i></a>
           </form>
           <ul class="navbar-nav ms-3">
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center me-3" href="sucursales.html">
+                Sucursales
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex align-items-center me-3" href="admin.html">
+                Administrador
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center me-3" href="carrito.html">
                 <i class="bi bi-cart-fill"></i>
