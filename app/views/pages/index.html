@@ -18,134 +18,147 @@
   <link rel="stylesheet" href="../../public/css/body.css">
   <link rel="stylesheet" href="../../public/js/movies.js">
   <script src="../../public/js/movies.js"></script>
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
 
 
-<!-- Modal de registro de usuario -->
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel" style="color: black;">Registro de Usuario</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña:</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Crea tu contraseña"> 
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña:</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Confirma tu contraseña"> 
-          </div>
-          <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal de registro de usuario -->
-
-
-
-<!-- Modal de inicio de sesión -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel" style="color: black;">Iniciar sesión</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico registrado">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña:</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña">            <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
-          </div>
-          <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Regístrate aquí</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal de inicio de sesión -->
-
-
-
-<!-- Modal de Administrador -->
-<div class="modal fade" id="loginModalAdmin" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel" style="color: black;">Iniciar sesión como administrador</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico:</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu correo electrónico registrado">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Contraseña:</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña">            <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
-          </div>
-          <div class="d-flex justify-content-between">
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal de inicio de sesión -->
-
-
-<!-- Modal de las cards-->
-<div class="modal fade" id="modalPelicula" tabindex="-1" aria-labelledby="modalPeliculaLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header" id="modal-header">
-        <h5 class="modal-title" id="modalPeliculaLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: white;"></button>
-      </div>
-      <div class="modal-body" id="text-modal">
-        <div class="d-flex">
-          <img src="../../public/img/star_wars.jpg" class="img-fluid me-3" alt="Título de la película" style="height: 300px;" id="modal-imagen">
-          <div class="d-flex flex-column">
-            <p><strong>Titulo:</strong> <span id="modal-titulo"></span></p>
-            <p><strong>Actores:</strong> <span id="modal-actores"></span></p>
-            <p><strong>Director:</strong> <span id="modal-director"></span></p>
-            <p><strong>Año de estreno:</strong> <span id="modal-año"></span></p>
-            <p><strong>Género: </strong> <span id="modal-genero"></span></p>
-          </div>
+  <!-- Modal de registro de usuario -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel" style="color: black;">Registro de Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
-        <p><strong>Sinopsis:</strong> <span id="modal-sinopsis"></span></p>
-
-      </div>
-      <div class="modal-footer" id="modal-footer">
-        <button type="button" class="btn btn-primary">Rentar</button>
-        <button type="button" class="btn btn-success">Comprar</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico:</label>
+              <input type="email" class="form-control" id="email" name="email"
+                placeholder="Ingresa tu correo electrónico">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="password" name="password"
+                placeholder="Crea tu contraseña">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="password" name="password"
+                placeholder="Confirma tu contraseña">
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary mx-auto" data-bs-toggle="modal"
+                data-bs-target="#registerModal">Registrarse</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- Modal de las cards-->
+  <!-- Modal de registro de usuario -->
+
+
+
+  <!-- Modal de inicio de sesión -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel" style="color: black;">Iniciar sesión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico:</label>
+              <input type="email" class="form-control" id="email" name="email"
+                placeholder="Ingresa tu correo electrónico registrado">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="password" name="password"
+                placeholder="Ingresa tu contraseña"> <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#registerModal"
+                data-bs-dismiss="modal">Regístrate aquí</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de inicio de sesión -->
+
+
+
+  <!-- Modal de Administrador -->
+  <div class="modal fade" id="loginModalAdmin" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel" style="color: black;">Iniciar sesión como administrador</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico:</label>
+              <input type="email" class="form-control" id="email" name="email"
+                placeholder="Ingresa tu correo electrónico registrado">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="password" name="password"
+                placeholder="Ingresa tu contraseña"> <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de inicio de sesión -->
+
+
+  <!-- Modal de las cards-->
+  <div class="modal fade" id="modalPelicula" tabindex="-1" aria-labelledby="modalPeliculaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" id="modal-header">
+          <h5 class="modal-title" id="modalPeliculaLabel"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="background-color: white;"></button>
+        </div>
+        <div class="modal-body" id="text-modal">
+          <div class="d-flex">
+            <img src="../../public/img/star_wars.jpg" class="img-fluid me-3" alt="Título de la película"
+              style="height: 300px;" id="modal-imagen">
+            <div class="d-flex flex-column">
+              <p><strong>Titulo:</strong> <span id="modal-titulo"></span></p>
+              <p><strong>Actores:</strong> <span id="modal-actores"></span></p>
+              <p><strong>Director:</strong> <span id="modal-director"></span></p>
+              <p><strong>Año de estreno:</strong> <span id="modal-año"></span></p>
+              <p><strong>Género: </strong> <span id="modal-genero"></span></p>
+            </div>
+          </div>
+          <p><strong>Sinopsis:</strong> <span id="modal-sinopsis"></span></p>
+
+        </div>
+        <div class="modal-footer" id="modal-footer">
+          <button type="button" class="btn btn-primary">Rentar</button>
+          <button type="button" class="btn btn-success">Comprar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de las cards-->
 
 </head>
 
@@ -245,22 +258,25 @@
                     search<i class="fas fa-chevron-right ps-2"></i></a>
                 </li>
               </ul>
-              <input type="search" class="form-control" placeholder="Buscar películas..." aria-label="Buscar películas..." />
+              <input type="search" class="form-control" placeholder="Buscar películas..."
+                aria-label="Buscar películas..." />
             </div>
             <a href="#!" class="text-white"><i class="bi bi-search ms-2"></i></i></a>
           </form>
 
           <ul class="navbar-nav ms-3">
             <li class="nav-item me-3">
-              <a class="nav-link d-flex align-items-center" href="#!" data-bs-toggle="modal" data-bs-target="#loginModalAdmin">Administrador</a>
+              <a class="nav-link d-flex align-items-center" href="#!" data-bs-toggle="modal"
+                data-bs-target="#loginModalAdmin">Administrador</a>
             </li>
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center me-3" href="carrito.html">
-                <i class="bi bi-cart-fill"></i> 
+                <i class="bi bi-cart-fill"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center me-3" href="#!" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <a class="nav-link d-flex align-items-center me-3" href="#!" data-bs-toggle="modal"
+                data-bs-target="#loginModal">
                 <i class="bi bi-person-fill "></i> Login
               </a>
             </li>
@@ -272,164 +288,149 @@
     </nav>
     <!-- Navbar -->
   </header>
-
-
-  <!-- Carousel and logo -->
-  <div class="d-flex justify-content-center mx-auto" id="box-div">
-    <!-- Carousel -->
-    <div id="carouselExampleControls" class="carousel slide mt-2 ms-5 mx-auto" style="width: 500px" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="../../public/img/avengers_endgame.jpg" class="d-block w-100" alt="Imagen 1">
-        </div>
-        <div class="carousel-item">
-          <img src="../../public/img/carousel2.jpg" class="d-block w-100" alt="Imagen 2">
-        </div>
-        <div class="carousel-item">
-          <img src="../../public/img/interstellar-movie-wallpaper.jpg" class="d-block w-100" alt="Imagen 3">
-        </div>
-      </div>
-      <button class="carousel-control-prev mx-auto" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      </button>
-    </div>
-    <div class="d-flex flex-column">
-      <div id="demotext" class=" d-flex justify-content-center">CinemaSurf</div>
-    <div id="demotext2" class=" me-5 d-flex justify-content-center">Renta o compra tus peliculas favoritas hoy mismo!</div>
-    </div>
-    
-  </div>
-  <!-- Carousel -->
-
-  <!-- Cards -->
-  <br><br>
-  <div class="mx auto ms-5">
-    <h3 style="text-decoration: underline; text-decoration-color:#e8e8b5;">Las más rentadas</h3>
-  </div>
-  
-  <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="Tron" data-sinopsis="Aqui meto la sinposis" data-director="Steven Lisberger" data-actores="Jeff Bridges, Bruce Boxleitner"
-    data-genero="Ciencia ficcion" data-imagen="../../public/img/star_wars.jpg"data-año="1982">
-      <img src="../../public/img/star_wars.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">Tron</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="Avatar" data-sinopsis="Aqui meto la sinposis" data-director="James Cameron" data-actores="Sam Worthington, Zoe Saldaña, Stephen Lang"
-    data-genero="Ciencia ficcion/Aventura" data-imagen="../../public/img/avatar.jpg" data-año="2009">
-      <img src="../../public/img/avatar.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">Avatar</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="Volver al futuro" data-sinopsis="Viajes en el tiempo al pasado para salvar el futuro. Un verdadero clásico." data-director="Robert Zemeckis" data-actores="Michael J. Fox, Christopher Lloyd, Lea Thompson"
-    data-genero="Ciencia ficcion/Aventura" data-imagen="../../public/img/volver-al-futuro.jpg"data-año="1985">
-      <img src="../../public/img/volver-al-futuro.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center" style="font-size: medium;">Volver al futuro</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="Star Wars Episodio IV" data-sinopsis="Sables de luz, peleas en el espacio, familia disfuncional... todo en una galaxia muy muy lejana." data-director="George Lucas" data-actores="Mark Hamill, Harrison Ford, Carrie Fisher"
-    data-genero="Ciencia ficcion/Aventura" data-imagen="../../public/img/star_wars2.jpg"data-año="1977">
-      <img src="../../public/img/star_wars2.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center" style="font-size: medium;" >Star Wars Episodio: IV</h5>
-      </div>
-    </div>
-  </div>
-
-  <br><br><br><br><br><br>
-  <div class="mx auto ms-5">
-    <h3 style="text-decoration: underline; text-decoration-color:#e8e8b5;">Ciencia ficcion</h3>
-  </div>
-  
-  <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="X-MEN: Days of future past" data-sinopsis="Hombres mutantes, accion y viajes en el tiempo." data-director="Bryan Singer" data-actores="Hugh Jackman, James McAvoy, Michael Fassbender"
-    data-genero="Ciencia ficción" data-imagen="../../public/img/accion1.jpg"data-año="1977">
-      <img src="../../public/img/accion1.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center" style="font-size: medium;">X-MEN: Days of future past</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="Matrix" data-sinopsis="Vivimos en una simulación? No, debió haber sido un sueño raro..." data-director="Lana Wachowski" data-actores="Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss"
-    data-genero="Ciencia ficción" data-imagen="../../public/img/cienciaficcion2.jpg"data-año="1999">
-      <img src="../../public/img/cienciaficcion2.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">Matrix</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="BladRunner 2049" data-sinopsis="Mundo cyberpunk futurista, Interlinked." data-director="Denis Villeneuve" data-actores="Ryan Gosling, Harrison Ford, Ana de Armas"
-    data-genero="Ciencia ficción" data-imagen="../../public/img/cienciaficcion3.jpg"data-año="2017">
-      <img src="../../public/img/cienciaficcion3.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">BladRunner 2049</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="E.T" data-sinopsis="Ser extraterrestial quiere volver a casa, historia de amistad y valor." data-director="Steven Spielberg" data-actores="Henry Thomas, Drew Barrymore, Peter Coyote"
-    data-genero="Ciencia ficción" data-imagen="../../public/img/cienciaficcion4.jpg"data-año="1982">
-      <img src="../../public/img/cienciaficcion4.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">E.T</h5>
-      </div>
-    </div>
-  </div>
-
-
-  <br><br><br><br><br><br>
-  <div class="mx auto ms-5">
-    <h3 style="text-decoration: underline; text-decoration-color:#e8e8b5;">Terror</h3>
-  </div>
-  
-  <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="BrightBurn" data-sinopsis="Si superman nunca hubiera sido un heroe" data-director="David Yarovesky" data-actores="Elizabeth Banks, David Denman, Jackson A. Dunn"
-    data-genero="Terror" data-imagen="../../public/img/terror1.jpg"data-año="2019">
-      <img src="../../public/img/terror1.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">BrightBurn</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="Child's Play" data-sinopsis="Alma de un asesino enjaulada en un juguete, ahora busca venganza..." data-director="Tom Holland" data-actores="Catherine Hicks, Chris Sarandon, Alex Vincent"
-    data-genero="Terror" data-imagen="../../public/img/terror2.jpg"data-año="1989">
-      <img src="../../public/img/terror2.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">Child´s Play</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="SCREAM" data-sinopsis="Historia de asesinatos y traiciones." data-director="Wes Craven" data-actores="Neve Campbell, Courteney Cox, David Arquette"
-    data-genero="Terror" data-imagen="../../public/img/terror3.jpg"data-año="1997">
-      <img src="../../public/img/terror3.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">Scream</h5>
-      </div>
-    </div>
-    <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" 
-    data-titulo="Terrifier 2" data-sinopsis="Alma maldita en busca de su siguiente victima" data-director="Damien Leone" data-actores="David Howard Thornton, Samantha Scaffidi, Jenna Kanell"
-    data-genero="Terror" data-imagen="../../public/img/terror4.jpg"data-año="2022">
-      <img src="../../public/img/terror4.jpg" class="card-img-top" alt="Imagen de película">
-      <div class="card-body">
-        <h5 class="card-title d-flex justify-content-center">Terrifier 2</h5>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Cards -->
   <main>
-  
+    <!-- Carousel and logo -->
+    <div class="container">
+      <div id="poster">
+        <img src="../../public/img/favicon.png" alt="Logo" id="logo" style="height: 140px;" />
+        <p id="title">CinemaSurf</p>
+        <p id="subtitle">Renta y compra de tus películas favoritas</p>
+      </div>
+    </div>
+    <!-- Carousel -->
+    <div class="container" style="padding-top: 20px;">
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Las más rentadas</h3>
+      </div>
+      <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Tron"
+          data-sinopsis="Aqui meto la sinposis" data-director="Steven Lisberger"
+          data-actores="Jeff Bridges, Bruce Boxleitner" data-genero="Ciencia ficcion"
+          data-imagen="../../public/img/star_wars.jpg" data-año="1982">
+          <img src="../../public/img/star_wars.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">Tron</h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Avatar"
+          data-sinopsis="Aqui meto la sinposis" data-director="James Cameron"
+          data-actores="Sam Worthington, Zoe Saldaña, Stephen Lang" data-genero="Ciencia ficcion/Aventura"
+          data-imagen="../../public/img/avatar.jpg" data-año="2009">
+          <img src="../../public/img/avatar.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">Avatar</h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Volver al futuro"
+          data-sinopsis="Viajes en el tiempo al pasado para salvar el futuro. Un verdadero clásico."
+          data-director="Robert Zemeckis" data-actores="Michael J. Fox, Christopher Lloyd, Lea Thompson"
+          data-genero="Ciencia ficcion/Aventura" data-imagen="../../public/img/volver-al-futuro.jpg" data-año="1985">
+          <img src="../../public/img/volver-al-futuro.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center" style="font-size: medium;">Volver al futuro</h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Star Wars Episodio IV"
+          data-sinopsis="Sables de luz, peleas en el espacio, familia disfuncional... todo en una galaxia muy muy lejana."
+          data-director="George Lucas" data-actores="Mark Hamill, Harrison Ford, Carrie Fisher"
+          data-genero="Ciencia ficcion/Aventura" data-imagen="../../public/img/star_wars2.jpg" data-año="1977">
+          <img src="../../public/img/star_wars2.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center" style="font-size: medium;">Star Wars: Episodio IV</h5>
+          </div>
+        </div>
+      </div>
+
+      <br><br><br>
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Ciencia ficción</h3>
+      </div>
+
+      <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula"
+          data-titulo="X-MEN: Days of future past" data-sinopsis="Hombres mutantes, accion y viajes en el tiempo."
+          data-director="Bryan Singer" data-actores="Hugh Jackman, James McAvoy, Michael Fassbender"
+          data-genero="Ciencia ficción" data-imagen="../../public/img/accion1.jpg" data-año="1977">
+          <img src="../../public/img/accion1.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center" style="font-size: medium;">X-Men: Days of Future Past
+            </h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Matrix"
+          data-sinopsis="Vivimos en una simulación? No, debió haber sido un sueño raro..."
+          data-director="Lana Wachowski" data-actores="Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss"
+          data-genero="Ciencia ficción" data-imagen="../../public/img/cienciaficcion2.jpg" data-año="1999">
+          <img src="../../public/img/cienciaficcion2.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">Matrix</h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="BladRunner 2049"
+          data-sinopsis="Mundo cyberpunk futurista, Interlinked." data-director="Denis Villeneuve"
+          data-actores="Ryan Gosling, Harrison Ford, Ana de Armas" data-genero="Ciencia ficción"
+          data-imagen="../../public/img/cienciaficcion3.jpg" data-año="2017">
+          <img src="../../public/img/cienciaficcion3.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">BladeRunner 2049</h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="E.T"
+          data-sinopsis="Ser extraterrestial quiere volver a casa, historia de amistad y valor."
+          data-director="Steven Spielberg" data-actores="Henry Thomas, Drew Barrymore, Peter Coyote"
+          data-genero="Ciencia ficción" data-imagen="../../public/img/cienciaficcion4.jpg" data-año="1982">
+          <img src="../../public/img/cienciaficcion4.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">E.T</h5>
+          </div>
+        </div>
+      </div>
+      
+      <br><br><br>
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Terror</h3>
+      </div>
+
+      <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="BrightBurn"
+          data-sinopsis="Si superman nunca hubiera sido un heroe" data-director="David Yarovesky"
+          data-actores="Elizabeth Banks, David Denman, Jackson A. Dunn" data-genero="Terror"
+          data-imagen="../../public/img/terror1.jpg" data-año="2019">
+          <img src="../../public/img/terror1.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">BrightBurn</h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Child's Play"
+          data-sinopsis="Alma de un asesino enjaulada en un juguete, ahora busca venganza..."
+          data-director="Tom Holland" data-actores="Catherine Hicks, Chris Sarandon, Alex Vincent" data-genero="Terror"
+          data-imagen="../../public/img/terror2.jpg" data-año="1989">
+          <img src="../../public/img/terror2.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">Child´s Play</h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="SCREAM"
+          data-sinopsis="Historia de asesinatos y traiciones." data-director="Wes Craven"
+          data-actores="Neve Campbell, Courteney Cox, David Arquette" data-genero="Terror"
+          data-imagen="../../public/img/terror3.jpg" data-año="1997">
+          <img src="../../public/img/terror3.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">Scream</h5>
+          </div>
+        </div>
+        <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Terrifier 2"
+          data-sinopsis="Alma maldita en busca de su siguiente victima" data-director="Damien Leone"
+          data-actores="David Howard Thornton, Samantha Scaffidi, Jenna Kanell" data-genero="Terror"
+          data-imagen="../../public/img/terror4.jpg" data-año="2022">
+          <img src="../../public/img/terror4.jpg" class="card-img-top" alt="Imagen de película">
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-center">Terrifier 2</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cards -->
   </main>
   <footer>
     <!-- place footer here -->
@@ -442,14 +443,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
-
-
-  
-
-
-
-
-
-
 </body>
+
 </html>
