@@ -135,8 +135,9 @@
         </div>
         <div class="modal-body" id="text-modal">
           <div class="d-flex">
-            <img src="../../public/img/star_wars.jpg" class="img-fluid me-3" alt="Título de la película"
-              style="height: 300px;" id="modal-imagen">
+            <video controls id="modal-video" class="img-fluid me-3" style="width: 300px;" autoplay muted loop>
+              <source id="modal-video-source" type="video/mp4">
+            </video>
             <div class="d-flex flex-column">
               <p><strong>Titulo:</strong> <span id="modal-titulo"></span></p>
               <p><strong>Actores:</strong> <span id="modal-actores"></span></p>
@@ -288,7 +289,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Tron"
           data-sinopsis="Aqui meto la sinposis" data-director="Steven Lisberger"
           data-actores="Jeff Bridges, Bruce Boxleitner" data-genero="Ciencia ficcion"
-          data-imagen="../../public/img/star_wars.jpg" data-año="1982">
+          data-video="../../public/videos/tron.mp4" data-año="1982">
           <img src="../../public/img/star_wars.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">Tron</h5>
@@ -297,7 +298,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Avatar"
           data-sinopsis="Aqui meto la sinposis" data-director="James Cameron"
           data-actores="Sam Worthington, Zoe Saldaña, Stephen Lang" data-genero="Ciencia ficcion/Aventura"
-          data-imagen="../../public/img/avatar.jpg" data-año="2009">
+          data-video="../../public/videos/avatar.mp4" data-año="2009">
           <img src="../../public/img/avatar.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">Avatar</h5>
@@ -306,7 +307,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Volver al futuro"
           data-sinopsis="Viajes en el tiempo al pasado para salvar el futuro. Un verdadero clásico."
           data-director="Robert Zemeckis" data-actores="Michael J. Fox, Christopher Lloyd, Lea Thompson"
-          data-genero="Ciencia ficcion/Aventura" data-imagen="../../public/img/volver-al-futuro.jpg" data-año="1985">
+          data-genero="Ciencia ficcion/Aventura" data-video="../../public/videos/back_to_future.mp4" data-año="1985">
           <img src="../../public/img/volver-al-futuro.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center" style="font-size: medium;">Volver al futuro</h5>
@@ -315,7 +316,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Star Wars Episodio IV"
           data-sinopsis="Sables de luz, peleas en el espacio, familia disfuncional... todo en una galaxia muy muy lejana."
           data-director="George Lucas" data-actores="Mark Hamill, Harrison Ford, Carrie Fisher"
-          data-genero="Ciencia ficcion/Aventura" data-imagen="../../public/img/star_wars2.jpg" data-año="1977">
+          data-genero="Ciencia ficcion/Aventura" data-video="../../public/videos/SW_IV.mp4" data-año="1977">
           <img src="../../public/img/star_wars2.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center" style="font-size: medium;">Star Wars: Episodio IV</h5>
@@ -332,7 +333,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula"
           data-titulo="X-MEN: Days of future past" data-sinopsis="Hombres mutantes, accion y viajes en el tiempo."
           data-director="Bryan Singer" data-actores="Hugh Jackman, James McAvoy, Michael Fassbender"
-          data-genero="Ciencia ficción" data-imagen="../../public/img/accion1.jpg" data-año="1977">
+          data-genero="Ciencia ficción" data-video="../../public/videos/x-men.mp4" data-año="1977">
           <img src="../../public/img/accion1.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center" style="font-size: medium;">X-Men: Days of Future Past
@@ -342,7 +343,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Matrix"
           data-sinopsis="Vivimos en una simulación? No, debió haber sido un sueño raro..."
           data-director="Lana Wachowski" data-actores="Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss"
-          data-genero="Ciencia ficción" data-imagen="../../public/img/cienciaficcion2.jpg" data-año="1999">
+          data-genero="Ciencia ficción" data-video="../../public/videos/matrix.mp4" data-año="1999">
           <img src="../../public/img/cienciaficcion2.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">Matrix</h5>
@@ -351,7 +352,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="BladRunner 2049"
           data-sinopsis="Mundo cyberpunk futurista, Interlinked." data-director="Denis Villeneuve"
           data-actores="Ryan Gosling, Harrison Ford, Ana de Armas" data-genero="Ciencia ficción"
-          data-imagen="../../public/img/cienciaficcion3.jpg" data-año="2017">
+          data-video="../../public/videos/bladeRunner2049.mp4" data-año="2017">
           <img src="../../public/img/cienciaficcion3.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">BladeRunner 2049</h5>
@@ -360,7 +361,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="E.T"
           data-sinopsis="Ser extraterrestial quiere volver a casa, historia de amistad y valor."
           data-director="Steven Spielberg" data-actores="Henry Thomas, Drew Barrymore, Peter Coyote"
-          data-genero="Ciencia ficción" data-imagen="../../public/img/cienciaficcion4.jpg" data-año="1982">
+          data-genero="Ciencia ficción" data-video="../../public/videos/E_T.mp4" data-año="1982">
           <img src="../../public/img/cienciaficcion4.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">E.T</h5>
@@ -377,7 +378,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="BrightBurn"
           data-sinopsis="Si superman nunca hubiera sido un heroe" data-director="David Yarovesky"
           data-actores="Elizabeth Banks, David Denman, Jackson A. Dunn" data-genero="Terror"
-          data-imagen="../../public/img/terror1.jpg" data-año="2019">
+          data-video="../../public/videos/BrightBurn.mp4" data-año="2019">
           <img src="../../public/img/terror1.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">BrightBurn</h5>
@@ -386,7 +387,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Child's Play"
           data-sinopsis="Alma de un asesino enjaulada en un juguete, ahora busca venganza..."
           data-director="Tom Holland" data-actores="Catherine Hicks, Chris Sarandon, Alex Vincent" data-genero="Terror"
-          data-imagen="../../public/img/terror2.jpg" data-año="1989">
+          data-video="../../public/videos/chucky.mp4" data-año="1989">
           <img src="../../public/img/terror2.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">Child's Play</h5>
@@ -395,7 +396,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="SCREAM"
           data-sinopsis="Historia de asesinatos y traiciones." data-director="Wes Craven"
           data-actores="Neve Campbell, Courteney Cox, David Arquette" data-genero="Terror"
-          data-imagen="../../public/img/terror3.jpg" data-año="1997">
+          data-video="../../public/videos/scream.mp4" data-año="1997">
           <img src="../../public/img/terror3.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">Scream</h5>
@@ -404,7 +405,7 @@
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Terrifier 2"
           data-sinopsis="Alma maldita en busca de su siguiente victima" data-director="Damien Leone"
           data-actores="David Howard Thornton, Samantha Scaffidi, Jenna Kanell" data-genero="Terror"
-          data-imagen="../../public/img/terror4.jpg" data-año="2022">
+          data-video="../../public/img/terror4.jpg" data-año="2022">
           <img src="../../public/img/terror4.jpg" class="card-img-top" alt="Imagen de película">
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-center">Terrifier 2</h5>
