@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-bs-theme="blue">
 
 <head>
-  <title>CinemaSurf - Movie rentals & more</title>
+  <title>CinemaSurf - Compra y renta de películas</title>
   <link rel="icon" type="image/x-icon" href="../../public/img/favicon.png">
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -16,8 +16,10 @@
   <link rel="stylesheet" href="../../public/css/carousel.css">
   <link rel="stylesheet" href="../../public/css/cards.css">
   <link rel="stylesheet" href="../../public/css/body.css">
+  <link rel="stylesheet" href="../../public/css/dark-mode.css">
   <link rel="stylesheet" href="../../public/js/movies.js">
   <script src="../../public/js/movies.js"></script>
+  <script src="../../public/js/dark-mode.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
@@ -200,13 +202,12 @@
       <!-- Container wrapper -->
       <div class="container">
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="index.html"><img id="CinemaSurf-logo" src="../../public/img/favicon.png" alt="CinemaSurf"
-            draggable="false" height="30" /></a>
+        <a class="navbar-brand" href="index.html"><img id="CinemaSurf-logo" src="../../public/img/favicon.png"
+            alt="CinemaSurf" draggable="false" height="30" /></a>
 
         <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="bi bi-list"></i>
         </button>
         <!-- Collapsible wrapper -->
@@ -263,9 +264,21 @@
                 <i class="bi bi-person-fill "></i> Login
               </a>
             </li>
-          </ul>
+            <li class="nav-item">
+              <div class="form-check form-switch ms-auto mt-3 me-3">
+                <label class="form-check-label ms-3" for="lightSwitch">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                    class="bi bi-brightness-high" viewBox="0 0 16 16">
+                    <path
+                      d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                  </svg>
+                </label>
+                <input class="form-check-input" type="checkbox" id="lightSwitch" />
+            </li>
         </div>
-        <!-- Collapsible wrapper -->
+        </ul>
+      </div>
+      <!-- Collapsible wrapper -->
       </div>
       <!-- Container wrapper -->
     </nav>
@@ -281,9 +294,10 @@
       </div>
     </div>
     <!-- Carousel -->
+
     <div class="container" style="padding-top: 20px;">
       <div class="mx auto ms-5">
-        <h3 style="text-decoration-color:#e8e8b5;">Las más hkjarguireghu rentadas</h3>
+        <h3 style="text-decoration-color:#e8e8b5;">Las más rentadas</h3>
       </div>
       <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
         <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Tron"
