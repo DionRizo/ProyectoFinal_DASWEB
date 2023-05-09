@@ -17,6 +17,73 @@
   <link rel="stylesheet" href="../../public/css/cart.css">
   <link rel="stylesheet" href="../../public/css/dark-mode.css">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Modal de registro de usuario -->
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title" id="loginModalLabel">Registro de Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body bg-light">
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico:</label>
+              <input type="email" class="form-control" id="email" name="email"
+                placeholder="Ingresa tu correo electrónico">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="password" name="password"
+                placeholder="Crea tu contraseña">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Confirmar contraseña:</label>
+              <input type="password" class="form-control" id="confirm-password" name="password"
+                placeholder="Confirma tu contraseña">
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary mx-auto" data-bs-toggle="modal"
+                data-bs-target="#registerModal">Registrarse</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de registro de usuario -->
+
+  <!-- Modal de inicio de sesión -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body bg-light">
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico:</label>
+              <input type="email" class="form-control" id="user-email" name="email"
+                placeholder="Ingresa tu correo electrónico">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" class="form-control" id="user-password" name="password"
+                placeholder="Ingresa tu contraseña"> <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#registerModal"
+                data-bs-dismiss="modal">Regístrate aquí</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -120,7 +187,7 @@
                         <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
                         <h6 class="mb-0 text-muted">2 items</h6>
                       </div>
-                      <hr class="my-4">
+                      <hr class="my-4" style="color: black;">
 
                       <div class="row mb-4 d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
@@ -145,14 +212,14 @@
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h6 class="mb-0">$ 25.00</h6>
+                          <h6 class="mb-0 text-black">$ 25.00</h6>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-muted"><i class="bi bi-x-lg"></i></a>
                         </div>
                       </div>
 
-                      <hr class="my-4">
+                      <hr class="my-4" style="color: black;">
 
                       <div class="row mb-4 d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
@@ -177,7 +244,7 @@
                           </button>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                          <h6 class="mb-0">$ 25.00</h6>
+                          <h6 class="mb-0 text-black">$ 25.00</h6>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                           <a href="#!" class="text-muted"><i class="bi bi-x-lg"></i></a>
@@ -194,19 +261,19 @@
                   </div>
                   <div class="col-lg-4 bg-grey">
                     <div class="p-5">
-                      <h3 class="fw-bold mb-5 mt-2 pt-1">Resumen de compra</h3>
+                      <h3 class="fw-bold mb-5 mt-2 pt-1 text-black">Resumen de compra</h3>
                       <hr class="my-4">
 
                       <div class="d-flex justify-content-between mb-4">
-                        <h5 class="text-uppercase">Brightburn (2019)</h5>
-                        <h5>$ 25.00</h5>
+                        <h5 class="text-uppercase text-black">Brightburn (2019)</h5>
+                        <h5 class="text-black">$ 25.00</h5>
                       </div>
                       <div class="d-flex justify-content-between mb-4">
-                        <h5 class="text-uppercase">Terrifier 2 (2022)</h5>
-                        <h5>$ 25.00</h5>
+                        <h5 class="text-uppercase text-black">Terrifier 2 (2022)</h5>
+                        <h5 class="text-black">$ 25.00</h5>
                       </div>
 
-                      <h5 class="text-uppercase mb-3">Envío</h5>
+                      <h5 class="text-uppercase mb-3 text-black">Envío</h5>
 
                       <div class="mb-4 pb-2">
                         <select class="form-select">
@@ -215,10 +282,10 @@
                         </select>
                       </div>
 
-                      <h5 class="text-uppercase mb-3">Código de descuento</h5>
+                      <h5 class="text-uppercase mb-3 text-black">Código de descuento</h5>
 
                       <div class="mb-5">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-3 text-black">
                           <input type="text" id="form3Examplea2" class="form-control form-control-lg" placeholder=" " />
                           <label for="form3Examplea2">Ej. RENTAL5OFF</label>
                         </div>
@@ -227,8 +294,8 @@
                       <hr class="my-4">
 
                       <div class="d-flex justify-content-between mb-5">
-                        <h5 class="text-uppercase">Total:</h5>
-                        <h5>$ 50.00</h5>
+                        <h5 class="text-uppercase text-black">Total:</h5>
+                        <h5 class="text-black">$ 50.00</h5>
                       </div>
                       <div style="text-align: center;">
                         <button type="button" class="btn btn-danger btn-block btn-lg"

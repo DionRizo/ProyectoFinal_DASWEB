@@ -16,6 +16,74 @@
     <link rel="stylesheet" href="../../public/css/admin.css">
     <link rel="stylesheet" href="../../public/css/dark-mode.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- Modal de registro de usuario -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="loginModalLabel">Registro de Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="Ingresa tu correo electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña:</label>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Crea tu contraseña">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Confirmar contraseña:</label>
+                            <input type="password" class="form-control" id="confirm-password" name="password"
+                                placeholder="Confirma tu contraseña">
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary mx-auto" data-bs-toggle="modal"
+                                data-bs-target="#registerModal">Registrarse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de registro de usuario -->
+
+    <!-- Modal de inicio de sesión -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <form>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="user-email" name="email"
+                                placeholder="Ingresa tu correo electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña:</label>
+                            <input type="password" class="form-control" id="user-password" name="password"
+                                placeholder="Ingresa tu contraseña"> <a href="#" class="forgot-password">¿Olvidaste la
+                                contraseña?</a>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#registerModal" data-bs-dismiss="modal">Regístrate aquí</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -109,7 +177,7 @@
     </header>
     <main>
         <div class="container">
-            <p style="font-size: 30px;">Administración de películas</p>
+            <p style="font-size: 30px; margin-top: 10px;">Administración de películas</p>
             <hr class="my-3" style="margin-top: 5px;">
 
             <div class="table-responsive">
@@ -167,7 +235,71 @@
                     </tbody>
                 </table>
             </div>
+
+            <p style="font-size: 30px; margin-top: 10px;">Códigos de descuento</p>
+            <hr class="my-3" style="margin-top: 5px;">
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Código</th>
+                            <th scope="col">Porcentaje</th>
+                            <th scope="col">Fecha de creación</th>
+                            <th scope="col">Válido en</th>
+                            <th scope="col">Inicio vigencia</th>
+                            <th scope="col">Final vigencia</th>
+                            <th scope="col">Editar/Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>5OFFRENTALS</td>
+                            <td>5%</td>
+                            <td>08-01-24</td>
+                            <td>Rentas</td>
+                            <td>10-01-24</td>
+                            <td>15-01-24</td>
+                            <td>
+                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>15OFFRENTALS</td>
+                            <td>15%</td>
+                            <td>08-01-24</td>
+                            <td>Rentas</td>
+                            <td>20-01-24</td>
+                            <td>25-01-24</td>
+                            <td>
+                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>XMASPROMO</td>
+                            <td>10%</td>
+                            <td>08-01-24</td>
+                            <td>Rentas, Ventas</td>
+                            <td>24-12-24</td>
+                            <td>25-12-24</td>
+                            <td>
+                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
         </div>
+
+        
     </main>
     <footer class="bg-dark text-center text-lg-start">
         <!-- Copyright -->
