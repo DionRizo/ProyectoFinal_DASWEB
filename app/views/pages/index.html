@@ -116,7 +116,7 @@
 
         </div>
         <div class="modal-footer bg-light">
-          <button type="button" class="btn btn-primary">Rentar</button>
+          <button type="button" class="btn btn-primary" id="rentarBtn">Rentar</button>
           <button type="button" class="btn btn-success">Comprar</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
@@ -125,39 +125,65 @@
   </div>
   <!-- Modal de las cards-->
 
+  <!-- Modal de renta -->
+  <div class="modal fade" id="modalRenta2" tabindex="-1" aria-labelledby="modalRentaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalRentaLabel">Renta de película</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex">
+          <img id="modal-imagen" class="img-fluid me-3" style="width: 150px;" />
+          <div>
+            <p><strong>Título:</strong> <span id="modal-titulo2"></span></p>
+            <p><strong>Precio:</strong> <span id="modal-precio"></span></p>
+            <form>
+              <div class="mb-3">
+                <label for="input-nombre" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="input-nombre">
+              </div>
+              <div class="mb-3">
+                <label for="input-tarjeta" class="form-label">Número de tarjeta</label>
+                <input type="text" class="form-control" id="input-tarjeta">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Rentar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de renta -->
+
+  <!-- Modal de compra -->
+  <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalRentarComprarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalRentarComprarLabel">Confirmar compra</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex">
+          <p>El precio de la compra de la película es de:</p>
+          <p><strong>$20 USD</strong></p>
+          <p>¿Desea continuar con la compra?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="confirmarBtn">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal de compra -->
 </head>
 
 <body>
   <header>
-    <!--
-    <div class="container mt-5">
-      <div class="accordion" id="accordionCategorias">
-          <div class="accordion-item">
-              <h2 class="accordion-header" id="categorias">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategorias" aria-expanded="false" aria-controls="collapseCategorias">
-                      Categorías de películas
-                  </button>
-              </h2>
-              <div id="collapseCategorias" class="accordion-collapse collapse" aria-labelledby="categorias" data-bs-parent="#accordionCategorias">
-                  <div class="accordion-body">
-                      <ul>
-                          <li><a href="accion.html" target="_blank">Acción</a></li>
-                          <li><a href="aventura.html" target="_blank">Aventura</a></li>
-                          <li><a href="comedia.html" target="_blank">Comedia</a></li>
-                          <li><a href="drama.html" target="_blank">Drama</a></li>
-                          <li><a href="romance.html" target="_blank">Romance</a></li>
-                          <li><a href="ciencia_ficcion.html" target="_blank">Ciencia ficción</a></li>
-                          <li><a href="terror.html" target="_blank">Terror</a></li>
-                          <li><a href="animacion.html" target="_blank">Animación</a></li>
-                          <li><a href="documental.html" target="_blank">Documental</a></li>
-                          <li><a href="fantasia.html" target="_blank">Fantasía</a></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  -->
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(42, 33, 51);">
       <div class="container">
@@ -261,7 +287,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Tron"
             data-sinopsis="Ciudad futurista con juegos mortales." data-director="Steven Lisberger"
             data-actores="Jeff Bridges, Bruce Boxleitner" data-genero="Ciencia ficcion"
-            data-video="../../public/videos/tron.mp4" data-año="1982">
+            data-video="../../public/videos/tron.mp4" data-año="1982" data-precio="10 USD">
             <img src="../../public/img/tron.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Tron</h5>
@@ -270,7 +296,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Avatar"
             data-sinopsis="Humanos buscando planetas que explotar." data-director="James Cameron"
             data-actores="Sam Worthington, Zoe Saldaña, Stephen Lang" data-genero="Ciencia ficcion/Aventura"
-            data-video="../../public/videos/avatar.mp4" data-año="2009">
+            data-video="../../public/videos/avatar.mp4" data-año="2009" data-precio="10 USD">
             <img src="../../public/img/avatar.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Avatar</h5>
@@ -279,7 +305,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Volver al futuro"
             data-sinopsis="Viajes en el tiempo al pasado para salvar el futuro. Un verdadero clásico."
             data-director="Robert Zemeckis" data-actores="Michael J. Fox, Christopher Lloyd, Lea Thompson"
-            data-genero="Ciencia ficcion/Aventura" data-video="../../public/videos/back_to_future.mp4" data-año="1985">
+            data-genero="Ciencia ficcion/Aventura" data-video="../../public/videos/back_to_future.mp4" data-año="1985" data-precio="10 USD">
             <img src="../../public/img/back_to_the_future.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Back to the Future</h5>
@@ -288,7 +314,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Star Wars Episodio IV"
             data-sinopsis="Sables de luz, peleas en el espacio, familia disfuncional... todo en una galaxia muy muy lejana."
             data-director="George Lucas" data-actores="Mark Hamill, Harrison Ford, Carrie Fisher"
-            data-genero="Ciencia ficcion/Aventura" data-video="../../public/videos/SW_IV.mp4" data-año="1977">
+            data-genero="Ciencia ficcion/Aventura" data-video="../../public/videos/SW_IV.mp4" data-año="1977" data-precio="10 USD">
             <img src="../../public/img/star_wars.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Star Wars: Episode IV</h5>
@@ -304,7 +330,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula"
             data-titulo="X-MEN: Days of future past" data-sinopsis="Hombres mutantes, accion y viajes en el tiempo."
             data-director="Bryan Singer" data-actores="Hugh Jackman, James McAvoy, Michael Fassbender"
-            data-genero="Ciencia ficción" data-video="../../public/videos/x-men.mp4" data-año="1977">
+            data-genero="Ciencia ficción" data-video="../../public/videos/x-men.mp4" data-año="1977" data-precio="10 USD">
             <img src="../../public/img/xmen_days_of_future_past.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">X-Men: Days of Future Past
@@ -314,7 +340,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Matrix"
             data-sinopsis="Vivimos en una simulación? No, debió haber sido un sueño raro..."
             data-director="Lana Wachowski" data-actores="Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss"
-            data-genero="Ciencia ficción" data-video="../../public/videos/matrix.mp4" data-año="1999">
+            data-genero="Ciencia ficción" data-video="../../public/videos/matrix.mp4" data-año="1999" data-precio="10 USD">
             <img src="../../public/img/the_matrix.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">The Matrix</h5>
@@ -323,7 +349,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="BladRunner 2049"
             data-sinopsis="Mundo cyberpunk futurista, Interlinked." data-director="Denis Villeneuve"
             data-actores="Ryan Gosling, Harrison Ford, Ana de Armas" data-genero="Ciencia ficción"
-            data-video="../../public/videos/bladeRunner2049.mp4" data-año="2017">
+            data-video="../../public/videos/bladeRunner2049.mp4" data-año="2017" data-precio="10 USD">
             <img src="../../public/img/blade_runner_2049.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Blade Runner 2049</h5>
@@ -332,7 +358,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="E.T"
             data-sinopsis="Ser extraterrestial quiere volver a casa, historia de amistad y valor."
             data-director="Steven Spielberg" data-actores="Henry Thomas, Drew Barrymore, Peter Coyote"
-            data-genero="Ciencia ficción" data-video="../../public/videos/E_T.mp4" data-año="1982">
+            data-genero="Ciencia ficción" data-video="../../public/videos/E_T.mp4" data-año="1982" data-precio="10 USD">
             <img src="../../public/img/et_the_extraterrestrial.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">E.T. the Extra-Terrestrial</h5>
@@ -348,7 +374,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Brightburn"
             data-sinopsis="Si superman nunca hubiera sido un heroe" data-director="David Yarovesky"
             data-actores="Elizabeth Banks, David Denman, Jackson A. Dunn" data-genero="Terror"
-            data-video="../../public/videos/BrightBurn.mp4" data-año="2019">
+            data-video="../../public/videos/BrightBurn.mp4" data-año="2019" data-precio="10 USD">
             <img src="../../public/img/brightburn.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Brightburn</h5>
@@ -357,7 +383,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Child's Play"
             data-sinopsis="Alma de un asesino enjaulada en un juguete, ahora busca venganza..."
             data-director="Tom Holland" data-actores="Catherine Hicks, Chris Sarandon, Alex Vincent"
-            data-genero="Terror" data-video="../../public/videos/chucky.mp4" data-año="1989">
+            data-genero="Terror" data-video="../../public/videos/chucky.mp4" data-año="1989" data-precio="10 USD">
             <img src="../../public/img/childs_play.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Child's Play</h5>
@@ -366,7 +392,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Scream"
             data-sinopsis="Historia de asesinatos y traiciones." data-director="Wes Craven"
             data-actores="Neve Campbell, Courteney Cox, David Arquette" data-genero="Terror"
-            data-video="../../public/videos/scream.mp4" data-año="1997">
+            data-video="../../public/videos/scream.mp4" data-año="1997" data-precio="10 USD">
             <img src="../../public/img/scream.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Scream</h5>
@@ -375,7 +401,7 @@
           <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Terrifier 2"
             data-sinopsis="Alma maldita en busca de su siguiente victima" data-director="Damien Leone"
             data-actores="David Howard Thornton, Samantha Scaffidi, Jenna Kanell" data-genero="Terror"
-            data-video="../../public/img/terror4.jpg" data-año="2022">
+            data-video="../../public/img/terror4.jpg" data-año="2022" data-precio="10 USD">
             <img src="../../public/img/terrifier_2.jpg" class="card-img-top" alt="Imagen de película">
             <div class="card-body">
               <h5 class="card-title d-flex justify-content-center">Terrifier 2</h5>
