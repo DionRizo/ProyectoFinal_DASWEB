@@ -24,6 +24,17 @@ function createMovieCard(movie) {
     cardDiv.setAttribute("data-bs-toggle", "modal");
     cardDiv.setAttribute("data-bs-target", "#modalPelicula");
     cardDiv.setAttribute("data-id", movie._id);
+    cardDiv.setAttribute("data-titulo", movie.title);
+    cardDiv.setAttribute("data-año", movie.year);
+    cardDiv.setAttribute("data-director", movie.director);
+    cardDiv.setAttribute("data-actores", movie.actors);
+    cardDiv.setAttribute("data-generos", movie.genres);
+    cardDiv.setAttribute("data-sinopsis", movie.synopsis);
+
+    let movieTrailerUrl = movie.trailerUrl;
+    movieTrailerUrl = movieTrailerUrl.replace("watch?v=", "embed/");
+    console.log(movieTrailerUrl);
+    cardDiv.setAttribute("data-video", movieTrailerUrl);
 
     const moviePosterImg = document.createElement("img");
     moviePosterImg.className = "card-img-top";

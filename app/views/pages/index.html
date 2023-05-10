@@ -3,7 +3,7 @@
 
 <head>
   <title>CinemaSurf - Compra y renta de películas</title>
-  <link rel="icon" type="image/x-icon" href="/public/img/favicon.png">
+  <link rel="icon" type="image/x-icon" href="../../public/img/favicon.png">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -99,15 +99,16 @@
         </div>
         <div class="modal-body bg-light">
           <div class="d-flex">
-            <video controls id="modal-video" class="img-fluid me-3" style="width: 300px;" autoplay muted loop>
-              <source id="modal-video-source" type="video/mp4">
-            </video>
+            <iframe id="modal-video" width="560" height="315" src=""
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; web-share"
+              allowfullscreen></iframe>
             <div class="d-flex flex-column">
               <p><strong>Titulo:</strong> <span id="modal-titulo"></span></p>
               <p><strong>Actores:</strong> <span id="modal-actores"></span></p>
               <p><strong>Director:</strong> <span id="modal-director"></span></p>
               <p><strong>Año de estreno:</strong> <span id="modal-año"></span></p>
-              <p><strong>Género: </strong> <span id="modal-genero"></span></p>
+              <p><strong>Género: </strong> <span id="modal-generos"></span></p>
             </div>
           </div>
           <p><strong>Sinopsis:</strong> <span id="modal-sinopsis"></span></p>
@@ -325,7 +326,7 @@
         <div class="d-flex justify-content-between ms-5 me-5" id="Sci-Fi-movies-container">
         </div>
       </div>
-  
+
       <div class="mx auto ms-5">
         <h3 style="text-decoration-color:#e8e8b5;">Horror</h3>
       </div>
@@ -355,6 +356,7 @@
     </script>
   <script src="../../public/js/dark-mode.js"></script>
   <script src="../../controllers/indexController.js"></script>
+  <script src="../../public/js/modalAttributes.js"></script>
 </body>
 
 </html>
