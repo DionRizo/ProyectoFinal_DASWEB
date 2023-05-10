@@ -1,16 +1,24 @@
-const express = require('express');
-const router = require("./app/controllers/router.js");
+const express = require("express");
+const mongoose = require("mongoose");
+const indexRoutes = require("./app/routes/indexRoutes");
 
-const app = express();
-const PORT = 3000;
+mongoose
+    .connect("mongodb+srv://CinemaSurfAdmin:giq1pqvGDDFrDaek@cinemasurfdb.yqvttyu.mongodb.net/movies", { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        const app = express()
+        app.use(express.static('app'));
+        app.use(express.json());
+        app.use("/api", indexRoutes);
+        
+        app.get("/", (req, res) => {
+            res.sendFile(__dirname + "/app/views/pages/index.html")
+        });
 
-const database = require('./database');
+        app.get("/", (req, res) => {
+            res.sendFile(__dirname + "/app/views/pages/sucursales.html")
+        });
 
-app.use(express.json());
-app.use(express.static('app'));
-app.use('/views', express.static('views'));
-app.use(router);
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+        app.listen(3000, () => {
+            console.log("Server has started!")
+        });
+    });
