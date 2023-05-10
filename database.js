@@ -6,11 +6,11 @@ mongoose.connect(mongoConnection, { useNewUrlParser: true, useUnifiedTopology: t
 const db = mongoose.connection;
 
 db.on('connecting', function () {
-  console.log("Conectando...");
+  console.log("Conectando a base de datos...");
   console.log(mongoose.connection.readyState);
 });
 
 db.on('connected', function () {
-  console.log("Conectado exitosamente!");
+  console.log("Conectado a base de datos exitosamente!");
   console.log(mongoose.connection.readyState);
 });
