@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const path = require('path');
+const database = require('./database');
 
 const PORT = 3000;
 
