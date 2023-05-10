@@ -21,6 +21,9 @@ async function renderMovies(genre) {
 function createMovieCard(movie) {
     const cardDiv = document.createElement("div");
     cardDiv.className = "card";
+    cardDiv.setAttribute("data-bs-toggle", "modal");
+    cardDiv.setAttribute("data-bs-target", "#modalPelicula");
+    cardDiv.setAttribute("data-id", movie._id);
 
     const moviePosterImg = document.createElement("img");
     moviePosterImg.className = "card-img-top";

@@ -14,7 +14,7 @@ mongoose
             res.sendFile(__dirname + "/app/views/pages/index.html")
         });
 
-        app.get("/", (req, res) => {
+        app.get("/stores", (req, res) => {
             res.sendFile(__dirname + "/app/views/pages/sucursales.html")
         });
 
