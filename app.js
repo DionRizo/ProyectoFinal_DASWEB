@@ -24,7 +24,6 @@ mongoose
             res.sendFile(__dirname + "/app/views/pages/admin.html")
         });
 
-
         app.listen(3000, () => {
             console.log("Server has started!")
         });

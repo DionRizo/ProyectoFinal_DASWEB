@@ -17,7 +17,6 @@ router.put("/movies/:id", async (req, res) => {
 
 router.delete("/movies/:id", async (req, res) => {
     const movieId = req.params.id;
-    // delete movie from object id _id in database
     await Movie.findByIdAndDelete(movieId);
     res.send({ message: "Movie deleted successfully" });
 });
@@ -25,6 +24,19 @@ router.delete("/movies/:id", async (req, res) => {
 router.get("/codes", async (req, res) => {
     const discountCodes = await DiscountCode.find();
 	res.send(discountCodes);
+});
+
+router.put("/codes/:id", async (req, res) => {
+    const discountCodeId = req.params.id;
+    const discountCode = req.body;
+    await DiscountCode.findByIdAndUpdate(discountCodeId, discountCode);
+    res.send({ message: "Discount code updated successfully" });
+});
+
+router.delete("/codes/:id", async (req, res) => {
+    const discountCodeId = req.params.id;
+    await DiscountCode.findByIdAndDelete(discountCodeId);
+    res.send({ message: "Discount code deleted successfully" });
 });
 
 module.exports = router
