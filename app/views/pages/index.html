@@ -90,34 +90,39 @@
 
   <!-- Modal de las cards-->
   <div class="modal fade" id="modalPelicula" tabindex="-1" aria-labelledby="modalPeliculaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header bg-light">
-          <h5 class="modal-title" id="modalPeliculaLabel"></h5>
+          <h5 class="modal-title" id="modalPeliculaLabel">1917</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             style="background-color: white;"></button>
         </div>
         <div class="modal-body bg-light">
-          <div class="d-flex">
-            <iframe id="modal-video" width="560" height="315" src=""
-              title="YouTube video player" frameborder="0"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; web-share"
-              allowfullscreen></iframe>
-            <div class="d-flex flex-column">
-              <p><strong>Titulo:</strong> <span id="modal-titulo"></span></p>
-              <p><strong>Actores:</strong> <span id="modal-actores"></span></p>
-              <p><strong>Director:</strong> <span id="modal-director"></span></p>
-              <p><strong>Año de estreno:</strong> <span id="modal-año"></span></p>
-              <p><strong>Género: </strong> <span id="modal-generos"></span></p>
+          <div class="row">
+            <div class="col-sm text-center align-self-center">
+              <div class="col">
+                <iframe id="modal-video" width="560" height="315" src=""
+                  title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="col-sm info">
+              <div class="col">
+                <p><b>Titulo:</b> <span id="modal-titulo"></span></p>
+                <p><b>Actores:</b> <span id="modal-actores"></span></p>
+                <p><b>Director:</b> <span id="modal-director"></span></p>
+                <p><b>Año de estreno:</b> <span id="modal-año"></span></p>
+                <p><b>Género: </b> <span id="modal-generos"></span></p>
+                <p><b>Sinopsis:</b> <span id="modal-sinopsis"></span></p>
+              </div>
+            </div>
+            <div class="modal-footer bg-light">
+              <button type="button" class="btn btn-primary" id="rentarBtn">Rentar</button>
+              <button type="button" class="btn btn-success">Comprar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
-          <p><strong>Sinopsis:</strong> <span id="modal-sinopsis"></span></p>
-
-        </div>
-        <div class="modal-footer bg-light">
-          <button type="button" class="btn btn-primary" id="rentarBtn">Rentar</button>
-          <button type="button" class="btn btn-success">Comprar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
@@ -278,23 +283,6 @@
     </div>
 
     <div class="container" style="padding-top: 20px;">
-      <div class="mx auto ms-5">
-        <h3>Las más rentadas</h3>
-      </div>
-      <div class="card-container" style="margin-bottom: 25px;">
-        <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Tron"
-            data-sinopsis="Ciudad futurista con juegos mortales." data-director="Steven Lisberger"
-            data-actores="Jeff Bridges, Bruce Boxleitner" data-genero="Ciencia ficcion"
-            data-video="../../public/videos/tron.mp4" data-año="1982" data-precio="10 USD">
-            <img src="../../public/img/tron.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Tron</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="mx auto ms-5">
         <h3 style="text-decoration-color:#e8e8b5;">Acción</h3>
       </div>
