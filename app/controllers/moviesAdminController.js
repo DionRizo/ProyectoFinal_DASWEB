@@ -89,8 +89,8 @@ async function updateMovieInDB(movie) {
 }
 
 function editMovie(movie) {
-    const editMovieModal = new bootstrap.Modal(document.getElementById('editionModal'));
-    const saveEditMovieButton = document.getElementById('confirmEdit');
+    const editMovieModal = new bootstrap.Modal(document.getElementById('movieEditionModal'));
+    const saveEditMovieButton = document.getElementById('confirmMovieEdit');
 
     document.getElementById('editMovieId').value = movie._id;
     document.getElementById('editMoviePosterUrl').value = movie.posterUrl;
@@ -146,8 +146,8 @@ async function deleteMovieFromDB(movieId) {
 }
 
 function deleteMovie(movie) {
-    const confirmationModal = new bootstrap.Modal(document.getElementById('deletionModal'));
-    const confirmDeleteButton = document.getElementById('confirmDeletion');
+    const confirmationModal = new bootstrap.Modal(document.getElementById('movieDeletionModal'));
+    const confirmDeleteButton = document.getElementById('confirmMovieDeletion');
 
     function onConfirm() {
         deleteMovieFromDB(movie._id);

@@ -85,12 +85,12 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deletionModal" tabindex="-1" role="dialog" aria-labelledby="deletionModalLabel"
+    <div class="modal fade" id="movieDeletionModal" tabindex="-1" role="dialog" aria-labelledby="movieDeletionModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deletionModalLabel">Advertencia: eliminar película</h5>
+                    <h5 class="modal-title" id="movieDeletionModalLabel">Advertencia: eliminar película</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -100,18 +100,18 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeletion">Eliminar película</button>
+                    <button type="button" class="btn btn-danger" id="confirmMovieDeletion">Eliminar película</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="editionModal" tabindex="-1" role="dialog" aria-labelledby="editionModalLabel"
+    <div class="modal fade" id="movieEditionModal" tabindex="-1" role="dialog" aria-labelledby=" movieEditionModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editionModalLable">Editando película</h5>
+                    <h5 class="modal-title" id="movieEditionModalLabel">Editando película</h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -158,16 +158,86 @@
                                 <input type="text" class="form-control" id="editMovieStoreAvailability" required>
                             </div>
                         </div>
-                        <!-- Add other form elements as needed -->
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success" id="confirmEdit">Confirmar edición</button>
+                    <button type="button" class="btn btn-success" id="confirmMovieEdit">Confirmar edición</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="codeDeletionModal" tabindex="-1" role="dialog" aria-labelledby="codeDeletionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="codeDeletionModalLabel">Advertencia: eliminar código</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro que deseas eliminar el código de descuento? Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmCodeDeletion">Eliminar código</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="codeEditionModal" tabindex="-1" role="dialog" aria-labelledby=" codeEditionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="codeEditionModalLabel">Editando código de descuento</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editCodeForm">
+                    <input type="hidden" id="editCodeId">
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label for="editMoviePosterUrl"><b>Código</b></label>
+                            <input type="text" class="form-control" id="editDiscountCode" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieTitle"><b>Porcentaje</b></label>
+                            <input type="text" class="form-control" id="editCodePercentage" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieYear"><b>Fecha de creación</b></label>
+                            <input type="text" class="form-control" id="editCodeCreationDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieDirector"><b>Válido en</b></label>
+                            <input type="text" class="form-control" id="editCodeValidIn" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieActors"><b>Inicio vigencia</b></label>
+                            <input type="text" class="form-control" id="editCodeValidFrom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieGenres"><b>Final vigencia</b></label>
+                            <input type="text" class="form-control" id="editCodeValidUntil" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="confirmMovieEdit">Confirmar edición</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -306,31 +376,7 @@
                             <th scope="col">Editar/Eliminar</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>5OFFRENTALS</td>
-                            <td>5%</td>
-                            <td>08-01-24</td>
-                            <td>Rentas</td>
-                            <td>10-01-24</td>
-                            <td>15-01-24</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>15OFFRENTALS</td>
-                            <td>15%</td>
-                            <td>08-01-24</td>
-                            <td>Rentas</td>
-                            <td>20-01-24</td>
-                            <td>25-01-24</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
+                    <tbody id="codes-container">
                     </tbody>
                 </table>
             </div>
