@@ -49,12 +49,49 @@ function addMovieRow(movie) {
     tdButtons.appendChild(btnEdit);
     tdButtons.appendChild(btnDelete);
 
+    btnDelete.addEventListener('click', () => {
+        deleteMovie(movie);
+    });
+
     const elements = [tdPoster, tdTitle, tdYear, tdDirector, tdActors, tdGenres, tdSynopsis, tdTrailerUrl, tdAvailability, tdButtons];
     elements.forEach((element) => {
         tr.appendChild(element);
     });
 
     return tr;
+}
+
+async function deleteMovieFromDB(movieId) {
+    const deleteApiUrl = `/admin/movies/${movieId}`;
+
+    try {
+        const response = await fetch(deleteApiUrl, {
+            method: 'DELETE',
+        });
+
+        if (response.ok) {
+            console.log('Movie deleted successfully');
+            renderMovies();
+        } else {
+            console.error('Failed to delete movie');
+        }
+    } catch (error) {
+        console.error('Error deleting movie:', error);
+    }
+}
+
+function deleteMovie(movie) {
+    const confirmationModal = new bootstrap.Modal(document.getElementById('deletionModal'));
+    const confirmDeleteButton = document.getElementById('confirmDeletion');
+
+    function onConfirm() {
+        deleteMovieFromDB(movie._id);
+        confirmDeleteButton.removeEventListener('click', onConfirm);
+        confirmationModal.hide();
+    }
+
+    confirmDeleteButton.addEventListener('click', onConfirm);
+    confirmationModal.show();
 }
 
 
