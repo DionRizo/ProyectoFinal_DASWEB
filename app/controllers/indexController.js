@@ -7,7 +7,6 @@ async function renderMoviesByGenre(genre) {
             movies.splice(i, 1);
         }
     }
-    console.log(movies);
 
     const moviesContainer = document.getElementById(`${genre}-movies-container`);
     moviesContainer.innerHTML = "";

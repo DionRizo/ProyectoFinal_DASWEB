@@ -21,33 +21,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Modal de registro de usuario -->
-  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-light">
-          <h5 class="modal-title" id="loginModalLabel">Registro de Usuario</h5>
+          <h5 class="modal-title" id="registerModalLabel">Registro de Usuario</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body bg-light">
-          <form>
+          <form id="registerForm">
             <div class="mb-3">
-              <label for="email" class="form-label">Correo electrónico:</label>
-              <input type="email" class="form-control" id="email" name="email"
-                placeholder="Ingresa tu correo electrónico">
+              <label for="username" class="form-label">Usuario:</label>
+              <input type="text" class="form-control" id="usernameRegister" name="username"
+                placeholder="Ingresa tu nombre de usuario">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="password" name="password"
+              <input type="password" class="form-control" id="passwordRegister" name="password"
                 placeholder="Crea tu contraseña">
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Confirmar contraseña:</label>
-              <input type="password" class="form-control" id="confirm-password" name="password"
-                placeholder="Confirma tu contraseña">
+            <div id="registerError" class="alert alert-danger mt-2" role="alert" style="display: none;">
+              Error al registrarse
             </div>
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-primary mx-auto" data-bs-toggle="modal"
-                data-bs-target="#registerModal">Registrarse</button>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" id="registerButton">Registrarse</button>
             </div>
           </form>
         </div>
@@ -65,23 +62,26 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body bg-light">
-          <form>
+          <form id="loginForm">
             <div class="mb-3">
-              <label for="email" class="form-label">Correo electrónico:</label>
-              <input type="email" class="form-control" id="user-email" name="email"
-                placeholder="Ingresa tu correo electrónico">
+              <label for="username" class="form-label">Usuario:</label>
+              <input type="text" class="form-control" id="usernameLogin" name="username"
+                placeholder="Ingresa tu nombre de usuario" required>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="user-password" name="password"
-                placeholder="Ingresa tu contraseña"> <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+              <input type="password" class="form-control" id="passwordLogin" name="password"
+                placeholder="Ingresa tu contraseña" required>
             </div>
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#registerModal"
-                data-bs-dismiss="modal">Regístrate aquí</button>
+            <div id="loginError" class="alert alert-danger mt-2" role="alert" style="display: none;">
+              Contraseña o usuario inválido.
             </div>
           </form>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="loginButton">Iniciar sesión</button>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#registerModal"
+              data-bs-dismiss="modal">Regístrate aquí</button>
+          </div>
         </div>
       </div>
     </div>
@@ -101,8 +101,7 @@
           <div class="row">
             <div class="col-sm text-center align-self-center">
               <div class="col">
-                <iframe id="modal-video" width="560" height="315" src=""
-                  title="YouTube video player" frameborder="0"
+                <iframe id="modal-video" width="560" height="315" src="" title="YouTube video player" frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowfullscreen></iframe>
               </div>
@@ -254,7 +253,8 @@
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center me-3" href="#!" data-bs-toggle="modal"
                 data-bs-target="#loginModal">
-                <i class="bi bi-person-fill "></i> Login
+                <i class="bi bi-person-fill "></i>
+                <p id="loginText">Login</p>
               </a>
             </li>
             <li class="nav-item">
@@ -348,6 +348,25 @@
   <script src="../../public/js/dark-mode.js"></script>
   <script src="../../controllers/indexController.js"></script>
   <script src="../../public/js/modalAttributes.js"></script>
+  <script src="../../controllers/userController.js"></script>
+  <script>
+    (async () => {
+      try {
+        const response = await fetch("/check-login", {
+          method: "GET",
+        });
+
+        if (response.ok) {
+          const responseData = await response.json();
+          if (responseData.username) {
+            document.getElementById("loginText").textContent = "Logout";
+          }
+        }
+      } catch (error) {
+        console.error("Error checking login status:", error);
+      }
+    })();
+  </script>
 </body>
 
 </html>
