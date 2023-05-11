@@ -21,7 +21,7 @@ function createElement(tag, attributes = {}, innerHTML = "") {
 }
 
 function addMovieRow(movie) {
-    const tr = createElement("tr");
+    const tr = createElement("tr", { "id": movie._id });
 
     const tdPoster = createElement("td");
     const imgPoster = createElement("img", { src: movie.posterUrl, style: "width: 120px;" });
@@ -49,6 +49,10 @@ function addMovieRow(movie) {
     tdButtons.appendChild(btnEdit);
     tdButtons.appendChild(btnDelete);
 
+    btnEdit.addEventListener('click', () => {
+        editMovie(movie);
+    });
+
     btnDelete.addEventListener('click', () => {
         deleteMovie(movie);
     });
@@ -59,6 +63,67 @@ function addMovieRow(movie) {
     });
 
     return tr;
+}
+
+async function updateMovieInDB(movie) {
+    const updateApiUrl = `/admin/movies/${movie._id}`;
+
+    try {
+        const response = await fetch(updateApiUrl, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(movie),
+        });
+
+        if (response.ok) {
+            console.log('Movie updated successfully');
+            renderMovies();
+        } else {
+            console.error('Failed to update movie');
+        }
+    } catch (error) {
+        console.error('Error updating movie:', error);
+    }
+}
+
+function editMovie(movie) {
+    const editMovieModal = new bootstrap.Modal(document.getElementById('editionModal'));
+    const saveEditMovieButton = document.getElementById('confirmEdit');
+
+    document.getElementById('editMovieId').value = movie._id;
+    document.getElementById('editMoviePosterUrl').value = movie.posterUrl;
+    document.getElementById('editMovieTitle').value = movie.title;
+    document.getElementById('editMovieYear').value = movie.year;
+    document.getElementById('editMovieDirector').value = movie.director;
+    document.getElementById('editMovieActors').value = movie.actors;
+    document.getElementById('editMovieGenres').value = movie.genres;
+    document.getElementById('editMovieSynopsis').value = movie.synopsis;
+    document.getElementById('editMovieTrailerUrl').value = movie.trailerUrl;
+    document.getElementById('editMovieStoreAvailability').value = movie.storeAvailability;
+
+    function onSave() {
+        const updatedMovie = {
+            _id: document.getElementById('editMovieId').value,
+            posterUrl: document.getElementById('editMoviePosterUrl').value,
+            title: document.getElementById('editMovieTitle').value,
+            year: document.getElementById('editMovieYear').value,
+            director: document.getElementById('editMovieDirector').value,
+            actors: document.getElementById('editMovieActors').value,
+            genres: document.getElementById('editMovieGenres').value,
+            synopsis: document.getElementById('editMovieSynopsis').value,
+            trailerUrl: document.getElementById('editMovieTrailerUrl').value,
+            storeAvailability: document.getElementById('editMovieStoreAvailability').value,
+        };
+
+        updateMovieInDB(updatedMovie);
+        saveEditMovieButton.removeEventListener('click', onSave);
+        editMovieModal.hide();
+    }
+
+    saveEditMovieButton.addEventListener('click', onSave);
+    editMovieModal.show();
 }
 
 async function deleteMovieFromDB(movieId) {

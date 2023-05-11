@@ -85,25 +85,89 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deletionModal" tabindex="-1" role="dialog" aria-labelledby="deletionModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deletionModal" tabindex="-1" role="dialog" aria-labelledby="deletionModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="deletionModalLabel">Advertencia: eliminar película</h5>
-              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletionModalLabel">Advertencia: eliminar película</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro que deseas eliminar la película? Esta acción no se puede deshacer.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeletion">Eliminar película</button>
+                </div>
             </div>
-            <div class="modal-body">
-              ¿Estás seguro que deseas eliminar la película? Esta acción no se puede deshacer.
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" class="btn btn-danger" id="confirmDeletion">Eliminar película</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
+
+    <div class="modal fade" id="editionModal" tabindex="-1" role="dialog" aria-labelledby="editionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editionModalLable">Editando película</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editMovieForm">
+                        <input type="hidden" id="editMovieId">
+                        <!-- Add other input fields for movie details -->
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <label for="editMoviePosterUrl"><b>Poster</b></label>
+                                <input type="text" class="form-control" id="editMoviePosterUrl" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieTitle"><b>Título</b></label>
+                                <input type="text" class="form-control" id="editMovieTitle" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieYear"><b>Año</b></label>
+                                <input type="text" class="form-control" id="editMovieYear" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieDirector"><b>Director</b></label>
+                                <input type="text" class="form-control" id="editMovieDirector" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieActors"><b>Actores</b></label>
+                                <input type="text" class="form-control" id="editMovieActors" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieGenres"><b>Géneros</b></label>
+                                <input type="text" class="form-control" id="editMovieGenres" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieSynopsis"><b>Sinopsis</b></label>
+                                <input type="text" class="form-control" id="editMovieSynopsis" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieTrailerUrl"><b>Trailer</b></label>
+                                <input type="text" class="form-control" id="editMovieTrailerUrl" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieAvailability"><b>Disponibilidad</b></label>
+                                <input type="text" class="form-control" id="editMovieStoreAvailability" required>
+                            </div>
+                        </div>
+                        <!-- Add other form elements as needed -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="confirmEdit">Confirmar edición</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -198,7 +262,8 @@
     <main>
         <div class="container">
             <p style="font-size: 30px; margin-top: 10px;">Administración de películas</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMovieModal">Agregar película</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMovieModal">Agregar
+                película</button>
             <hr class="my-3" style="margin-top: 5px;">
 
             <div class="table-responsive">
@@ -218,13 +283,14 @@
                         </tr>
                     </thead>
                     <tbody id="movies-container">
-                        
+
                     </tbody>
                 </table>
             </div>
 
             <p style="font-size: 30px; margin-top: 10px;">Códigos de descuento</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDiscountCode">Agregar código de descuento</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDiscountCode">Agregar código de
+                descuento</button>
             <hr class="my-3" style="margin-top: 5px;">
 
             <div class="table-responsive">
