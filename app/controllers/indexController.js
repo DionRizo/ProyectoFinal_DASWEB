@@ -1,5 +1,5 @@
-async function renderMovies(genre) {
-    const response = await fetch("/api/movies");
+async function renderMoviesByGenre(genre) {
+    const response = await fetch("/index/movies");
     const movies = await response.json();
     // Remove all movies that do not contain genre in their genres list
     for (let i = movies.length - 1; i >= 0; i--) {
@@ -33,7 +33,6 @@ function createMovieCard(movie) {
 
     let movieTrailerUrl = movie.trailerUrl;
     movieTrailerUrl = movieTrailerUrl.replace("watch?v=", "embed/");
-    console.log(movieTrailerUrl);
     cardDiv.setAttribute("data-video", movieTrailerUrl);
 
     const moviePosterImg = document.createElement("img");
@@ -53,9 +52,9 @@ function createMovieCard(movie) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    renderMovies("Action");
-    renderMovies("Adventure");
-    renderMovies("Comedy");
-    renderMovies("Horror"); 
-    renderMovies("Sci-Fi");
+    renderMoviesByGenre("Action");
+    renderMoviesByGenre("Adventure");
+    renderMoviesByGenre("Comedy");
+    renderMoviesByGenre("Horror"); 
+    renderMoviesByGenre("Sci-Fi");
 });

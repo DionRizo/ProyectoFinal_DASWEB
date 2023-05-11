@@ -178,13 +178,13 @@
     <main>
         <div class="container">
             <p style="font-size: 30px; margin-top: 10px;">Administración de películas</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMovieModal">Agregar película</button>
             <hr class="my-3" style="margin-top: 5px;">
 
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Poster</th>
                             <th scope="col">Título</th>
                             <th scope="col">Año</th>
@@ -193,57 +193,24 @@
                             <th scope="col">Género</th>
                             <th scope="col">Sinopsis</th>
                             <th scope="col">Trailer</th>
+                            <th scope="col">Disponibilidad</th>
                             <th scope="col">Editar/Eliminar</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td><img src="../../public/img/star_wars.jpg" style="width: 120px;" alt="Poster Tron"></td>
-                            <td>Tron</td>
-                            <td>1982</td>
-                            <td>Steven Lisberger</td>
-                            <td>Jeff Bridges, Bruce Boxleitner</td>
-                            <td>Ciencia ficción</td>
-                            <td>Kevin, a software programmer, is dragged into the virtual world where he is pitted
-                                against a malevolent software. He takes the help of Tron, a security programme that
-                                helps him defeat the villain.</td>
-                            <td>https://www.youtube.com/watch?v=3efV2wqEjEY</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td><img src="../../public/img/avatar.jpg" style="width: 120px;" alt="Poster Avatar"></td>
-                            <td>Avatar</td>
-                            <td>2009</td>
-                            <td>James Cameron</td>
-                            <td>Sam Worthington, Zoe Saldaña, Stephen Lang</td>
-                            <td>Ciencia ficcion/Aventura</td>
-                            <td>Jake, who is paraplegic, replaces his twin on the Na'vi inhabited Pandora for a
-                                corporate mission. After the natives accept him as one of their own, he must decide
-                                where his loyalties lie.</td>
-                            <td>https://www.youtube.com/watch?v=5PSNL1qE6VY</td>
-
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
+                    <tbody id="movies-container">
+                        
                     </tbody>
                 </table>
             </div>
 
             <p style="font-size: 30px; margin-top: 10px;">Códigos de descuento</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDiscountCode">Agregar código de descuento</button>
             <hr class="my-3" style="margin-top: 5px;">
 
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Código</th>
                             <th scope="col">Porcentaje</th>
                             <th scope="col">Fecha de creación</th>
@@ -255,7 +222,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
                             <td>5OFFRENTALS</td>
                             <td>5%</td>
                             <td>08-01-24</td>
@@ -268,7 +234,6 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
                             <td>15OFFRENTALS</td>
                             <td>15%</td>
                             <td>08-01-24</td>
@@ -280,23 +245,9 @@
                                 <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>XMASPROMO</td>
-                            <td>10%</td>
-                            <td>08-01-24</td>
-                            <td>Rentas, Ventas</td>
-                            <td>24-12-24</td>
-                            <td>25-12-24</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
-
         </div>
 
 
@@ -318,6 +269,7 @@
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
     <script src="../../public/js/dark-mode.js"></script>
+    <script src="../../controllers/adminController.js"></script>
 </body>
 
 </html>
