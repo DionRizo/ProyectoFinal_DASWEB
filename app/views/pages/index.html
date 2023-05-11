@@ -11,45 +11,40 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../../public/css/navbar.css">
   <link rel="stylesheet" href="../../public/css/cards.css">
   <link rel="stylesheet" href="../../public/css/body.css">
   <link rel="stylesheet" href="../../public/css/dark-mode.css">
-  <script src="../../public/js/movies.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
-
 
   <!-- Modal de registro de usuario -->
-  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-light">
-          <h5 class="modal-title" id="loginModalLabel">Registro de Usuario</h5>
+          <h5 class="modal-title" id="registerModalLabel">Registro de Usuario</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body bg-light">
-          <form>
+          <form id="registerForm">
             <div class="mb-3">
-              <label for="email" class="form-label">Correo electrónico:</label>
-              <input type="email" class="form-control" id="email" name="email"
-                placeholder="Ingresa tu correo electrónico">
+              <label for="username" class="form-label">Usuario:</label>
+              <input type="text" class="form-control" id="usernameRegister" name="username"
+                placeholder="Ingresa tu nombre de usuario">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="password" name="password"
+              <input type="password" class="form-control" id="passwordRegister" name="password"
                 placeholder="Crea tu contraseña">
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Confirmar contraseña:</label>
-              <input type="password" class="form-control" id="confirm-password" name="password"
-                placeholder="Confirma tu contraseña">
+            <div id="registerError" class="alert alert-danger mt-2" role="alert" style="display: none;">
+              Error al registrarse
             </div>
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-primary mx-auto" data-bs-toggle="modal"
-                data-bs-target="#registerModal">Registrarse</button>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" id="registerButton">Registrarse</button>
             </div>
           </form>
         </div>
@@ -67,23 +62,26 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body bg-light">
-          <form>
+          <form id="loginForm">
             <div class="mb-3">
-              <label for="email" class="form-label">Correo electrónico:</label>
-              <input type="email" class="form-control" id="user-email" name="email"
-                placeholder="Ingresa tu correo electrónico">
+              <label for="username" class="form-label">Usuario:</label>
+              <input type="text" class="form-control" id="usernameLogin" name="username"
+                placeholder="Ingresa tu nombre de usuario" required>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña:</label>
-              <input type="password" class="form-control" id="user-password" name="password"
-                placeholder="Ingresa tu contraseña"> <a href="#" class="forgot-password">¿Olvidaste la contraseña?</a>
+              <input type="password" class="form-control" id="passwordLogin" name="password"
+                placeholder="Ingresa tu contraseña" required>
             </div>
-            <div class="d-flex justify-content-between">
-              <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#registerModal"
-                data-bs-dismiss="modal">Regístrate aquí</button>
+            <div id="loginError" class="alert alert-danger mt-2" role="alert" style="display: none;">
+              Contraseña o usuario inválido.
             </div>
           </form>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="loginButton">Iniciar sesión</button>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#registerModal"
+              data-bs-dismiss="modal">Regístrate aquí</button>
+          </div>
         </div>
       </div>
     </div>
@@ -92,7 +90,7 @@
 
   <!-- Modal de las cards-->
   <div class="modal fade" id="modalPelicula" tabindex="-1" aria-labelledby="modalPeliculaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header bg-light">
           <h5 class="modal-title" id="modalPeliculaLabel"></h5>
@@ -100,86 +98,37 @@
             style="background-color: white;"></button>
         </div>
         <div class="modal-body bg-light">
-          <div class="d-flex">
-            <video controls id="modal-video" class="img-fluid me-3" style="width: 300px;" autoplay muted loop>
-              <source id="modal-video-source" type="video/mp4">
-            </video>
-            <div class="d-flex flex-column">
-              <p><strong>Titulo:</strong> <span id="modal-titulo"></span></p>
-              <p><strong>Actores:</strong> <span id="modal-actores"></span></p>
-              <p><strong>Director:</strong> <span id="modal-director"></span></p>
-              <p><strong>Año de estreno:</strong> <span id="modal-año"></span></p>
-              <p><strong>Género: </strong> <span id="modal-genero"></span></p>
+          <div class="row">
+            <div class="col-sm text-center align-self-center">
+              <div class="col">
+                <iframe id="modal-video" width="560" height="315" src="" title="YouTube video player" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="col-sm info">
+              <div class="col">
+                <p><b>Titulo:</b> <span id="modal-titulo"></span></p>
+                <p><b>Actores:</b> <span id="modal-actores"></span></p>
+                <p><b>Director:</b> <span id="modal-director"></span></p>
+                <p><b>Año de estreno:</b> <span id="modal-año"></span></p>
+                <p><b>Género: </b> <span id="modal-generos"></span></p>
+                <p><b>Sinopsis:</b> <span id="modal-sinopsis"></span></p>
+              </div>
+            </div>
+            <div class="modal-footer bg-light">
+              <button type="button" class="btn btn-primary" id="rentarBtn">Rentar</button>
+              <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                modal-bs-target="#modalBuyMovie" id="modal-buy-button">Comprar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
-          <p><strong>Sinopsis:</strong> <span id="modal-sinopsis"></span></p>
-
-        </div>
-        <div class="modal-footer bg-light">
-          <button type="button" class="btn btn-primary" id="rentarBtn">Rentar</button>
-          <button type="button" class="btn btn-success">Comprar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
   </div>
   <!-- Modal de las cards-->
 
-  <!-- Modal de renta -->
-  <div class="modal fade" id="modalRenta2" tabindex="-1" aria-labelledby="modalRentaLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalRentaLabel">Renta de película</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body d-flex">
-          <img id="modal-imagen" class="img-fluid me-3" style="width: 150px;" />
-          <div>
-            <p><strong>Título:</strong> <span id="modal-titulo2"></span></p>
-            <p><strong>Precio:</strong> <span id="modal-precio"></span></p>
-            <form>
-              <div class="mb-3">
-                <label for="input-nombre" class="form-label">Nombre completo</label>
-                <input type="text" class="form-control" id="input-nombre">
-              </div>
-              <div class="mb-3">
-                <label for="input-tarjeta" class="form-label">Número de tarjeta</label>
-                <input type="text" class="form-control" id="input-tarjeta">
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Rentar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal de renta -->
-
-  <!-- Modal de compra -->
-  <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalRentarComprarLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalRentarComprarLabel">Confirmar compra</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body d-flex">
-          <p>El precio de la compra de la película es de:</p>
-          <p><strong>$20 USD</strong></p>
-          <p>¿Desea continuar con la compra?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" id="confirmarBtn">Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal de compra -->
 </head>
 
 <body>
@@ -187,8 +136,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(42, 33, 51);">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img id="CinemaSurf-logo" src="../../public/img/favicon.png"
-            alt="CinemaSurf" draggable="false" height="30" /></a>
+        <a class="navbar-brand" href="/"><img id="CinemaSurf-logo" src="../../public/img/favicon.png" alt="CinemaSurf"
+            draggable="false" height="30" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="bi bi-list"></i>
@@ -220,7 +169,10 @@
                   <a class="dropdown-item" href="#"><i class="bi bi-emoji-laughing-fill"></i> Comedia</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#"><i class="bi bi-emoji-frown-fill"></i> Terror</a>
+                  <a class="dropdown-item" href="#"><i class="bi bi-emoji-frown-fill"></i> Horror</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-rocket-takeoff"></i> Sci-Fi</a>
                 </li>
               </ul>
               <input type="search" class="form-control" placeholder="Buscar películas..."
@@ -230,24 +182,25 @@
           </form>
           <ul class="navbar-nav ms-3">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center me-3" href="sucursales.html">
+              <a class="nav-link d-flex align-items-center me-3" href="/stores">
                 Sucursales
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center me-3" href="admin.html">
+              <a class="nav-link d-flex align-items-center me-3" href="/admin">
                 Administrador
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center me-3" href="carrito.html">
+              <a class="nav-link d-flex align-items-center me-3" href="/cart">
                 <i class="bi bi-cart-fill"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link d-flex align-items-center me-3" href="#!" data-bs-toggle="modal"
                 data-bs-target="#loginModal">
-                <i class="bi bi-person-fill "></i> Login
+                <i class="bi bi-person-fill "></i>
+                <p id="loginText">Login</p>
               </a>
             </li>
             <li class="nav-item">
@@ -280,133 +233,42 @@
 
     <div class="container" style="padding-top: 20px;">
       <div class="mx auto ms-5">
-        <h3>Las más rentadas</h3>
+        <h3 style="text-decoration-color:#e8e8b5;">Acción</h3>
       </div>
       <div class="card-container" style="margin-bottom: 25px;">
-        <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Tron"
-            data-sinopsis="Ciudad futurista con juegos mortales." data-director="Steven Lisberger"
-            data-actores="Jeff Bridges, Bruce Boxleitner" data-genero="Ciencia ficcion"
-            data-video="../../public/videos/tron.mp4" data-año="1982" data-precio="10 USD">
-            <img src="../../public/img/tron.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Tron</h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Avatar"
-            data-sinopsis="Humanos buscando planetas que explotar." data-director="James Cameron"
-            data-actores="Sam Worthington, Zoe Saldaña, Stephen Lang" data-genero="Ciencia ficcion/Aventura"
-            data-video="../../public/videos/avatar.mp4" data-año="2009" data-precio="10 USD">
-            <img src="../../public/img/avatar.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Avatar</h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Volver al futuro"
-            data-sinopsis="Viajes en el tiempo al pasado para salvar el futuro. Un verdadero clásico."
-            data-director="Robert Zemeckis" data-actores="Michael J. Fox, Christopher Lloyd, Lea Thompson"
-            data-genero="Ciencia ficcion/Aventura" data-video="../../public/videos/back_to_future.mp4" data-año="1985" data-precio="10 USD">
-            <img src="../../public/img/back_to_the_future.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Back to the Future</h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Star Wars Episodio IV"
-            data-sinopsis="Sables de luz, peleas en el espacio, familia disfuncional... todo en una galaxia muy muy lejana."
-            data-director="George Lucas" data-actores="Mark Hamill, Harrison Ford, Carrie Fisher"
-            data-genero="Ciencia ficcion/Aventura" data-video="../../public/videos/SW_IV.mp4" data-año="1977" data-precio="10 USD">
-            <img src="../../public/img/star_wars.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Star Wars: Episode IV</h5>
-            </div>
-          </div>
+        <div class="d-flex justify-content-between ms-5 me-5" id="Action-movies-container">
         </div>
       </div>
+
       <div class="mx auto ms-5">
-        <h3 style="text-decoration-color:#e8e8b5;">Ciencia ficción</h3>
+        <h3 style="text-decoration-color:#e8e8b5;">Aventura</h3>
       </div>
       <div class="card-container" style="margin-bottom: 25px;">
-        <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula"
-            data-titulo="X-MEN: Days of future past" data-sinopsis="Hombres mutantes, accion y viajes en el tiempo."
-            data-director="Bryan Singer" data-actores="Hugh Jackman, James McAvoy, Michael Fassbender"
-            data-genero="Ciencia ficción" data-video="../../public/videos/x-men.mp4" data-año="1977" data-precio="10 USD">
-            <img src="../../public/img/xmen_days_of_future_past.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">X-Men: Days of Future Past
-              </h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Matrix"
-            data-sinopsis="Vivimos en una simulación? No, debió haber sido un sueño raro..."
-            data-director="Lana Wachowski" data-actores="Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss"
-            data-genero="Ciencia ficción" data-video="../../public/videos/matrix.mp4" data-año="1999" data-precio="10 USD">
-            <img src="../../public/img/the_matrix.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">The Matrix</h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="BladRunner 2049"
-            data-sinopsis="Mundo cyberpunk futurista, Interlinked." data-director="Denis Villeneuve"
-            data-actores="Ryan Gosling, Harrison Ford, Ana de Armas" data-genero="Ciencia ficción"
-            data-video="../../public/videos/bladeRunner2049.mp4" data-año="2017" data-precio="10 USD">
-            <img src="../../public/img/blade_runner_2049.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Blade Runner 2049</h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="E.T"
-            data-sinopsis="Ser extraterrestial quiere volver a casa, historia de amistad y valor."
-            data-director="Steven Spielberg" data-actores="Henry Thomas, Drew Barrymore, Peter Coyote"
-            data-genero="Ciencia ficción" data-video="../../public/videos/E_T.mp4" data-año="1982" data-precio="10 USD">
-            <img src="../../public/img/et_the_extraterrestrial.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">E.T. the Extra-Terrestrial</h5>
-            </div>
-          </div>
+        <div class="d-flex justify-content-between ms-5 me-5" id="Adventure-movies-container">
         </div>
       </div>
+
       <div class="mx auto ms-5">
-        <h3 style="text-decoration-color:#e8e8b5;">Terror</h3>
+        <h3 style="text-decoration-color:#e8e8b5;">Comedia</h3>
       </div>
       <div class="card-container" style="margin-bottom: 25px;">
-        <div class="d-flex justify-content-between ms-5 me-5" id="hole-card">
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Brightburn"
-            data-sinopsis="Si superman nunca hubiera sido un heroe" data-director="David Yarovesky"
-            data-actores="Elizabeth Banks, David Denman, Jackson A. Dunn" data-genero="Terror"
-            data-video="../../public/videos/BrightBurn.mp4" data-año="2019" data-precio="10 USD">
-            <img src="../../public/img/brightburn.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Brightburn</h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Child's Play"
-            data-sinopsis="Alma de un asesino enjaulada en un juguete, ahora busca venganza..."
-            data-director="Tom Holland" data-actores="Catherine Hicks, Chris Sarandon, Alex Vincent"
-            data-genero="Terror" data-video="../../public/videos/chucky.mp4" data-año="1989" data-precio="10 USD">
-            <img src="../../public/img/childs_play.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Child's Play</h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Scream"
-            data-sinopsis="Historia de asesinatos y traiciones." data-director="Wes Craven"
-            data-actores="Neve Campbell, Courteney Cox, David Arquette" data-genero="Terror"
-            data-video="../../public/videos/scream.mp4" data-año="1997" data-precio="10 USD">
-            <img src="../../public/img/scream.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Scream</h5>
-            </div>
-          </div>
-          <div class="card" data-bs-toggle="modal" data-bs-target="#modalPelicula" data-titulo="Terrifier 2"
-            data-sinopsis="Alma maldita en busca de su siguiente victima" data-director="Damien Leone"
-            data-actores="David Howard Thornton, Samantha Scaffidi, Jenna Kanell" data-genero="Terror"
-            data-video="../../public/img/terror4.jpg" data-año="2022" data-precio="10 USD">
-            <img src="../../public/img/terrifier_2.jpg" class="card-img-top" alt="Imagen de película">
-            <div class="card-body">
-              <h5 class="card-title d-flex justify-content-center">Terrifier 2</h5>
-            </div>
-          </div>
+        <div class="d-flex justify-content-between ms-5 me-5" id="Comedy-movies-container">
+        </div>
+      </div>
+
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Ciencia Ficción</h3>
+      </div>
+      <div class="card-container" style="margin-bottom: 25px;">
+        <div class="d-flex justify-content-between ms-5 me-5" id="Sci-Fi-movies-container">
+        </div>
+      </div>
+
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Horror</h3>
+      </div>
+      <div class="card-container" style="margin-bottom: 25px;">
+        <div class="d-flex justify-content-between ms-5 me-5" id="Horror-movies-container">
         </div>
       </div>
     </div>
@@ -430,6 +292,27 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
   <script src="../../public/js/dark-mode.js"></script>
+  <script src="../../controllers/indexController.js"></script>
+  <script src="../../public/js/modalAttributes.js"></script>
+  <script src="../../controllers/userController.js"></script>
+  <script>
+    (async () => {
+      try {
+        const response = await fetch("/check-login", {
+          method: "GET",
+        });
+
+        if (response.ok) {
+          const responseData = await response.json();
+          if (responseData.username) {
+            document.getElementById("loginText").textContent = "Logout";
+          }
+        }
+      } catch (error) {
+        console.error("Error checking login status:", error);
+      }
+    })();
+  </script>
 </body>
 
 </html>

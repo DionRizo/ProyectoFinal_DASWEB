@@ -84,6 +84,160 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="movieDeletionModal" tabindex="-1" role="dialog" aria-labelledby="movieDeletionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="movieDeletionModalLabel">Advertencia: eliminar película</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro que deseas eliminar la película? Esta acción no se puede deshacer.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmMovieDeletion">Eliminar película</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="movieEditionModal" tabindex="-1" role="dialog" aria-labelledby=" movieEditionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="movieEditionModalLabel">Editando película</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="editMovieForm">
+                        <input type="hidden" id="editMovieId">
+                        <!-- Add other input fields for movie details -->
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <label for="editMoviePosterUrl"><b>Poster</b></label>
+                                <input type="text" class="form-control" id="editMoviePosterUrl" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieTitle"><b>Título</b></label>
+                                <input type="text" class="form-control" id="editMovieTitle" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieYear"><b>Año</b></label>
+                                <input type="text" class="form-control" id="editMovieYear" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieDirector"><b>Director</b></label>
+                                <input type="text" class="form-control" id="editMovieDirector" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieActors"><b>Actores</b></label>
+                                <input type="text" class="form-control" id="editMovieActors" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieGenres"><b>Géneros</b></label>
+                                <input type="text" class="form-control" id="editMovieGenres" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieSynopsis"><b>Sinopsis</b></label>
+                                <input type="text" class="form-control" id="editMovieSynopsis" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieTrailerUrl"><b>Trailer</b></label>
+                                <input type="text" class="form-control" id="editMovieTrailerUrl" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editMovieAvailability"><b>Disponibilidad</b></label>
+                                <input type="text" class="form-control" id="editMovieStoreAvailability" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="confirmMovieEdit">Confirmar edición</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="codeDeletionModal" tabindex="-1" role="dialog" aria-labelledby="codeDeletionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="codeDeletionModalLabel">Advertencia: eliminar código</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro que deseas eliminar el código de descuento? Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmCodeDeletion">Eliminar código</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="codeEditionModal" tabindex="-1" role="dialog" aria-labelledby=" codeEditionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="codeEditionModalLabel">Editando código de descuento</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editCodeForm">
+                    <input type="hidden" id="editCodeId">
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label for="editMoviePosterUrl"><b>Código</b></label>
+                            <input type="text" class="form-control" id="editDiscountCode" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieTitle"><b>Porcentaje</b></label>
+                            <input type="text" class="form-control" id="editCodePercentage" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieYear"><b>Fecha de creación</b></label>
+                            <input type="text" class="form-control" id="editCodeCreationDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieDirector"><b>Válido en</b></label>
+                            <input type="text" class="form-control" id="editCodeValidIn" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieActors"><b>Inicio vigencia</b></label>
+                            <input type="text" class="form-control" id="editCodeValidFrom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieGenres"><b>Final vigencia</b></label>
+                            <input type="text" class="form-control" id="editCodeValidUntil" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="confirmCodeEdit">Confirmar edición</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -91,7 +245,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(42, 33, 51);">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img id="CinemaSurf-logo" src="../../public/img/favicon.png"
+                <a class="navbar-brand" href="/"><img id="CinemaSurf-logo" src="../../public/img/favicon.png"
                         alt="CinemaSurf" draggable="false" height="30" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -137,17 +291,17 @@
                     </form>
                     <ul class="navbar-nav ms-3">
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center me-3" href="sucursales.html">
+                            <a class="nav-link d-flex align-items-center me-3" href="/stores">
                                 Sucursales
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center me-3" href="admin.html">
+                            <a class="nav-link d-flex align-items-center me-3" href="/admin">
                                 Administrador
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center me-3" href="carrito.html">
+                            <a class="nav-link d-flex align-items-center me-3" href="/cart">
                                 <i class="bi bi-cart-fill"></i>
                             </a>
                         </li>
@@ -178,13 +332,14 @@
     <main>
         <div class="container">
             <p style="font-size: 30px; margin-top: 10px;">Administración de películas</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMovieModal">Agregar
+                película</button>
             <hr class="my-3" style="margin-top: 5px;">
 
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Poster</th>
                             <th scope="col">Título</th>
                             <th scope="col">Año</th>
@@ -193,57 +348,25 @@
                             <th scope="col">Género</th>
                             <th scope="col">Sinopsis</th>
                             <th scope="col">Trailer</th>
+                            <th scope="col">Disponibilidad</th>
                             <th scope="col">Editar/Eliminar</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td><img src="../../public/img/star_wars.jpg" style="width: 120px;" alt="Poster Tron"></td>
-                            <td>Tron</td>
-                            <td>1982</td>
-                            <td>Steven Lisberger</td>
-                            <td>Jeff Bridges, Bruce Boxleitner</td>
-                            <td>Ciencia ficción</td>
-                            <td>Kevin, a software programmer, is dragged into the virtual world where he is pitted
-                                against a malevolent software. He takes the help of Tron, a security programme that
-                                helps him defeat the villain.</td>
-                            <td>https://www.youtube.com/watch?v=3efV2wqEjEY</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td><img src="../../public/img/avatar.jpg" style="width: 120px;" alt="Poster Avatar"></td>
-                            <td>Avatar</td>
-                            <td>2009</td>
-                            <td>James Cameron</td>
-                            <td>Sam Worthington, Zoe Saldaña, Stephen Lang</td>
-                            <td>Ciencia ficcion/Aventura</td>
-                            <td>Jake, who is paraplegic, replaces his twin on the Na'vi inhabited Pandora for a
-                                corporate mission. After the natives accept him as one of their own, he must decide
-                                where his loyalties lie.</td>
-                            <td>https://www.youtube.com/watch?v=5PSNL1qE6VY</td>
+                    <tbody id="movies-container">
 
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
 
             <p style="font-size: 30px; margin-top: 10px;">Códigos de descuento</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDiscountCode">Agregar código de
+                descuento</button>
             <hr class="my-3" style="margin-top: 5px;">
 
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Código</th>
                             <th scope="col">Porcentaje</th>
                             <th scope="col">Fecha de creación</th>
@@ -253,53 +376,13 @@
                             <th scope="col">Editar/Eliminar</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>5OFFRENTALS</td>
-                            <td>5%</td>
-                            <td>08-01-24</td>
-                            <td>Rentas</td>
-                            <td>10-01-24</td>
-                            <td>15-01-24</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>15OFFRENTALS</td>
-                            <td>15%</td>
-                            <td>08-01-24</td>
-                            <td>Rentas</td>
-                            <td>20-01-24</td>
-                            <td>25-01-24</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>XMASPROMO</td>
-                            <td>10%</td>
-                            <td>08-01-24</td>
-                            <td>Rentas, Ventas</td>
-                            <td>24-12-24</td>
-                            <td>25-12-24</td>
-                            <td>
-                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-x-lg"></i></button>
-                            </td>
-                        </tr>
+                    <tbody id="codes-container">
                     </tbody>
                 </table>
             </div>
-            
         </div>
 
-        
+
     </main>
     <footer class="bg-dark text-center text-lg-start">
         <!-- Copyright -->
@@ -318,6 +401,8 @@
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
         </script>
     <script src="../../public/js/dark-mode.js"></script>
+    <script src="../../controllers/moviesAdminController.js"></script>
+    <script src="../../controllers/discountsAdminController.js"></script>
 </body>
 
 </html>
