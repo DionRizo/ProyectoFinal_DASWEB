@@ -6,6 +6,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./app/models/User");
 const indexRoutes = require("./app/routes/indexRoutes");
 const adminRoutes = require("./app/routes/adminRoutes");
+const storesRoutes = require("./app/routes/storesRoutes");
 
 mongoose
     .connect("mongodb+srv://CinemaSurfAdmin:giq1pqvGDDFrDaek@cinemasurfdb.yqvttyu.mongodb.net/movies", { useNewUrlParser: true, useUnifiedTopology: true })
@@ -15,6 +16,7 @@ mongoose
         app.use(express.json());
         app.use("/index", indexRoutes);
         app.use("/admin", adminRoutes);
+        app.use("/stores", storesRoutes);
 
         app.get("/", (req, res) => {
             res.sendFile(__dirname + "/app/views/pages/index.html")
@@ -47,7 +49,13 @@ mongoose
         });
 
         app.post("/register", (req, res) => {
-            User.register(new User({ username: req.body.username }), req.body.password, (err, user) => {
+            const newUser = new User({
+                username: req.body.username,
+                cart: [],
+                previousOrders: []
+            });
+
+            User.register(newUser, req.body.password, (err, user) => {
                 if (err) {
                     console.log(err);
                     return res.status(400).json({ message: 'Registration failed', error: err });
@@ -88,12 +96,12 @@ mongoose
 
         app.get("/logout", (req, res) => {
             req.logout(() => {
-              req.session.destroy();
-              res.redirect("/");
-              console.log("Logged out");
+                req.session.destroy();
+                res.redirect("/");
+                console.log("Logged out");
             });
-          });
-          
+        });
+
 
         app.get("/check-login", (req, res) => {
             if (req.session.username) {

@@ -93,7 +93,7 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header bg-light">
-          <h5 class="modal-title" id="modalPeliculaLabel">1917</h5>
+          <h5 class="modal-title" id="modalPeliculaLabel"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             style="background-color: white;"></button>
         </div>
@@ -118,7 +118,8 @@
             </div>
             <div class="modal-footer bg-light">
               <button type="button" class="btn btn-primary" id="rentarBtn">Rentar</button>
-              <button type="button" class="btn btn-success">Comprar</button>
+              <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                modal-bs-target="#modalBuyMovie" id="modal-buy-button">Comprar</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
@@ -128,61 +129,6 @@
   </div>
   <!-- Modal de las cards-->
 
-  <!-- Modal de renta -->
-  <div class="modal fade" id="modalRenta2" tabindex="-1" aria-labelledby="modalRentaLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalRentaLabel">Renta de película</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body d-flex">
-          <img id="modal-imagen" class="img-fluid me-3" style="width: 150px;" />
-          <div>
-            <p><strong>Título:</strong> <span id="modal-titulo2"></span></p>
-            <p><strong>Precio:</strong> <span id="modal-precio"></span></p>
-            <form>
-              <div class="mb-3">
-                <label for="input-nombre" class="form-label">Nombre completo</label>
-                <input type="text" class="form-control" id="input-nombre">
-              </div>
-              <div class="mb-3">
-                <label for="input-tarjeta" class="form-label">Número de tarjeta</label>
-                <input type="text" class="form-control" id="input-tarjeta">
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Rentar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal de renta -->
-
-  <!-- Modal de compra -->
-  <div class="modal fade" id="modalCompra" tabindex="-1" aria-labelledby="modalRentarComprarLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalRentarComprarLabel">Confirmar compra</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body d-flex">
-          <p>El precio de la compra de la película es de:</p>
-          <p><strong>$20 USD</strong></p>
-          <p>¿Desea continuar con la compra?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" id="confirmarBtn">Confirmar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal de compra -->
 </head>
 
 <body>
@@ -241,7 +187,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center me-3" href="/admin/panel">
+              <a class="nav-link d-flex align-items-center me-3" href="/admin">
                 Administrador
               </a>
             </li>
