@@ -87,9 +87,13 @@ mongoose
         });
 
         app.get("/logout", (req, res) => {
-            req.logout();
-            res.redirect("/");
-        });
+            req.logout(() => {
+              req.session.destroy();
+              res.redirect("/");
+              console.log("Logged out");
+            });
+          });
+          
 
         app.get("/check-login", (req, res) => {
             if (req.session.username) {

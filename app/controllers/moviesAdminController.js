@@ -9,6 +9,7 @@ async function renderMovies() {
         const row = addMovieRow(movie);
         moviesContainer.appendChild(row);
     }
+    console.log("moviesAdminController.js: Se han cargado las películas satisfactoriamente")
 }
 
 function createElement(tag, attributes = {}, innerHTML = "") {
@@ -67,7 +68,6 @@ function addMovieRow(movie) {
 
 async function updateMovieInDB(movie) {
     const updateApiUrl = `/admin/movies/${movie._id}`;
-
     try {
         const response = await fetch(updateApiUrl, {
             method: 'PUT',
@@ -78,13 +78,13 @@ async function updateMovieInDB(movie) {
         });
 
         if (response.ok) {
-            console.log('Movie updated successfully');
+            console.log('moviesAdminController.js: Se actualizó la película satisfactoriamente');
             renderMovies();
         } else {
-            console.error('Failed to update movie');
+            console.error('moviesAdminController.js: Error al actualizar la película');
         }
     } catch (error) {
-        console.error('Error updating movie:', error);
+        console.error('moviesAdminController.js - Error al actualizar la película:', error);
     }
 }
 
@@ -116,7 +116,7 @@ function editMovie(movie) {
             trailerUrl: document.getElementById('editMovieTrailerUrl').value,
             storeAvailability: document.getElementById('editMovieStoreAvailability').value,
         };
-
+        console.log('moviesAdminController.js: Actualizando película...')
         updateMovieInDB(updatedMovie);
         saveEditMovieButton.removeEventListener('click', onSave);
         editMovieModal.hide();
@@ -135,13 +135,14 @@ async function deleteMovieFromDB(movieId) {
         });
 
         if (response.ok) {
-            console.log('Movie deleted successfully');
+            console.log('moviesAdminController.js: Película eliminada satisfactoriamente');
             renderMovies();
         } else {
-            console.error('Failed to delete movie');
+            console.log('moviesAdminController.js: Error al eliminar la película');
         }
     } catch (error) {
-        console.error('Error deleting movie:', error);
+        console.log('moviesAdminController.js: Error al intentar eliminar la película');
+        console.error(error);
     }
 }
 
@@ -150,6 +151,7 @@ function deleteMovie(movie) {
     const confirmDeleteButton = document.getElementById('confirmMovieDeletion');
 
     function onConfirm() {
+        console.log('moviesAdminController.js: Eliminando película...');
         deleteMovieFromDB(movie._id);
         confirmDeleteButton.removeEventListener('click', onConfirm);
         confirmationModal.hide();
@@ -161,5 +163,7 @@ function deleteMovie(movie) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("moviesAdminController.js: La página está cargada");
+    console.log("moviesAdminController.js: Cargando películas...");
     renderMovies();
 });

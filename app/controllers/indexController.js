@@ -1,7 +1,7 @@
 async function renderMoviesByGenre(genre) {
     const response = await fetch("/index/movies");
     const movies = await response.json();
-    // Remove all movies that do not contain genre in their genres list
+
     for (let i = movies.length - 1; i >= 0; i--) {
         if (!movies[i].genres.includes(genre)) {
             movies.splice(i, 1);
@@ -15,6 +15,7 @@ async function renderMoviesByGenre(genre) {
         const card = createMovieCard(movie);
         moviesContainer.appendChild(card);
     }
+    console.log("indexController.js: Se han cargado las películas satisfactoriamente");
 }
 
 function createMovieCard(movie) {
@@ -51,6 +52,8 @@ function createMovieCard(movie) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("indexController.js: Se ha cargado la página index.hmtl");
+    console.log("indexController.js: Cargando películas por género...")
     renderMoviesByGenre("Action");
     renderMoviesByGenre("Adventure");
     renderMoviesByGenre("Comedy");

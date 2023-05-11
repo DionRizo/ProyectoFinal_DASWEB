@@ -9,6 +9,7 @@ async function renderCodes() {
         const row = addCodeRow(code);
         codesContainer.appendChild(row);
     }
+    console.log("discountsAdminController.js: Se han cargado los códigos satisfactoriamente")
 }
 
 function createElement(tag, attributes = {}, innerHTML = "") {
@@ -70,13 +71,14 @@ async function updateCodeInDB(code) {
         });
 
         if (response.ok) {
-            console.log('Discount code updated successfully');
+            console.log('discountsAdminController.js: Código de descuento actualizado satisfactoriamente');
+            console.log('discountsAdminController.js: Recargando códigos de descuento');
             renderCodes();
         } else {
-            console.error('Failed to update discount code');
+            console.error('discountsAdminController.js: Error al actualizar el código de descuento');
         }
     } catch (error) {
-        console.error('Error updating discount code:', error);
+        console.error('discountsAdminController.js - Error al actualizar el código de descuento:', error);
     }
 }
 
@@ -120,13 +122,14 @@ async function deleteCodeFromDB(codeId) {
         });
 
         if (response.ok) {
-            console.log('Discount code deleted successfully');
+            console.log('discountsAdminController.js: Código de descuento eliminado satisfactoriamente');
+            console.log('discountsAdminController.js: Recargando códigos de descuento');
             renderCodes();
         } else {
-            console.error('Failed to delete discount code');
+            console.error('discountsAdminController.js: Error al eliminar el código de descuento');
         }
     } catch (error) {
-        console.error('Error deleting discount code:', error);
+        console.error('discountsAdminController.js - Error al eliminar el código de descuento:', error);
     }
 }
 
@@ -135,6 +138,7 @@ function deleteCode(code) {
     const confirmDeleteButton = document.getElementById('confirmCodeDeletion');
 
     function onConfirm() {
+        console.log('discountsAdminController.js: Eliminando código de descuento...');
         deleteCodeFromDB(code._id);
         confirmDeleteButton.removeEventListener('click', onConfirm);
         confirmationModal.hide();
@@ -146,5 +150,7 @@ function deleteCode(code) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("discountsAdminController.js: La página se ha cargado satisfactoriamente");
+    console.log("discountsAdminController.js: Cargando códigos de descuento...");
     renderCodes();
 });
