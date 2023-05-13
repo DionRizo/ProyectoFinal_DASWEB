@@ -7,6 +7,7 @@ const User = require("./app/models/User");
 const indexRoutes = require("./app/routes/indexRoutes");
 const adminRoutes = require("./app/routes/adminRoutes");
 const storesRoutes = require("./app/routes/storesRoutes");
+const { login } = require("./app/utils/global");
 
 
 mongoose.connect("mongodb+srv://CinemaSurfAdmin:giq1pqvGDDFrDaek@cinemasurfdb.yqvttyu.mongodb.net/movies", { useNewUrlParser: true, useUnifiedTopology: true })
@@ -33,40 +34,47 @@ mongoose.connect("mongodb+srv://CinemaSurfAdmin:giq1pqvGDDFrDaek@cinemasurfdb.yq
             res.sendFile(__dirname + "/app/views/pages/admin.html")
         });
 
+        app.get("/cart", (req, res) => {
+            res.sendFile(__dirname + "/app/views/pages/carrito.html")
+        });
+
         app.post('/register', async (req, res) => {
+            console.log(req.body);
             console.log("app.js: admin");
             const {username, password} = req.body;
-            const user = new User({username, password});
+            const user = new User({username, password})
 
             try {
                 await user.save();
-                res.status(200).send("Usuario registrado satisfactoriamente.");
+                const userLogin = await login(username, password);
+                console.log({userLogin});
+                
+                if (!userLogin) {
+                    console.log("No se pudo autenticar al usuario recien registrado.");
+                    res.status(500).send("Usuario o contraseña incorrectos.");
+                } else {
+                    console.log("Usuario registrado y autenticado satisfactoriamente.");
+                    res.status(200).send({message:"Usuario registrado y autenticado satisfactoriamente.", user:userLogin});
+                }
+
             } catch (err) {
+                console.log(err);
                 res.status(500).send("Error registrando al nuevo usuario, por favor intente de nuevo.");
             }
         });
 
         app.post('/authenticate', async (req, res) => {
             const {username, password} = req.body;
-
-            try {
-                const user = await User.findOne({username});
-                if (!user) {
-                    res.status(500).send("Usuario no registrado.");
-                } else {
-                    user.isCorrectPassword(password, (err, result) => {
-                        if (err) {
-                            res.status(500).send("Error al autenticar al usuario, por favor intente de nuevo.");
-                        } else if (result) {
-                            res.status(200).send("Usuario autenticado satisfactoriamente.");
-                        } else {
-                            res.status(500).send("Usuario o contraseña incorrectos.");
-                        }
-                    });
-                }
-            } catch (err) {
-                res.status(500).send("Error al autenticar al usuario, por favor intente de nuevo.");
+            
+            const user = await login(username, password);
+            
+            if (!user) {
+                res.status(500).send("Usuario o contraseña incorrectos.");
+            } else {
+                res.status(200).send({message:"Usuario autenticado satisfactoriamente.", user});
             }
+
+           
         });
 
         app.listen(3000, () => {
