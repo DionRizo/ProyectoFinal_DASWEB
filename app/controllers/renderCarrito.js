@@ -1,0 +1,3 @@
+initCart();
+
+renderItemsCart();
