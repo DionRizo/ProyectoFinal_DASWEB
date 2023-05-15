@@ -1,0 +1,126 @@
+<%- include('./partials/addedToCartModal') %>
+  <%- include('./partials/movieModal') %>
+
+    <div class="container">
+      <div id="poster">
+        <img src="img/favicon.png" alt="Logo" id="logo" style="height: 140px;" />
+        <p id="title">CinemaSurf</p>
+        <p id="subtitle">Buy & rent your favorite movies</p>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top: 20px;">
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Action</h3>
+      </div>
+      <div class="card-container" style="margin-bottom: 25px;">
+        <div class="d-flex justify-content-between ms-5 me-5" id="Action-movies-container">
+        </div>
+      </div>
+
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Adventure</h3>
+      </div>
+      <div class="card-container" style="margin-bottom: 25px;">
+        <div class="d-flex justify-content-between ms-5 me-5" id="Adventure-movies-container">
+        </div>
+      </div>
+
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Comedy</h3>
+      </div>
+      <div class="card-container" style="margin-bottom: 25px;">
+        <div class="d-flex justify-content-between ms-5 me-5" id="Comedy-movies-container">
+        </div>
+      </div>
+
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Sci-fi</h3>
+      </div>
+      <div class="card-container" style="margin-bottom: 25px;">
+        <div class="d-flex justify-content-between ms-5 me-5" id="Science Fiction-movies-container">
+        </div>
+      </div>
+
+      <div class="mx auto ms-5">
+        <h3 style="text-decoration-color:#e8e8b5;">Horror</h3>
+      </div>
+      <div class="card-container" style="margin-bottom: 25px;">
+        <div class="d-flex justify-content-between ms-5 me-5" id="Horror-movies-container">
+        </div>
+      </div>
+    </div>
+
+    <link rel="stylesheet" href="/css/landing.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <script src="moviesController.js"></script>
+    <script src="/js/movieModalAttributes.js"></script>
+
+    <% if (user) { %>
+      <script>
+        const buyButton = document.getElementById('buy-button');
+        const userId = "<%= user.id %>";
+
+        buyButton.addEventListener('click', function () {
+          console.log("Clicked purchase button");
+          const movieId = document.getElementById('modal-id-purchase').textContent;
+          // Fetch movie by id
+          fetch('/movies/' + movieId)
+            .then(response => response.json())
+            .then(movie => {
+              console.log("Pelicula a agregar al carrito: ", movie);
+              // Add movie to cart
+              fetch('/users/' + userId + '/cart', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  orderType: 'Purchase',
+                  posterUrl: movie.posterUrl,
+                  name: movie.title,
+                  genres: movie.genres,
+                  year: movie.year,
+                  dateOfPurchase: Date.now(),
+                })
+              })
+            })
+            .catch(error => console.error(error));
+        })
+          .catch(error => console.error(error));
+      </script>
+
+      <script>
+
+        const rentalButton = document.getElementById('rental-button');
+
+        rentalButton.addEventListener('click', function () {
+          console.log("Clicked rental button");
+          const movieId = document.getElementById('modal-id-rental').textContent;
+          // Fetch movie by id
+          fetch('/movies/' + movieId)
+            .then(response => response.json())
+            .then(movie => {
+              console.log("Pelicula a agregar al carrito: ", movie);
+              // Add movie to cart
+              fetch('/users/' + userId + '/cart', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  orderType: 'Rental',
+                  posterUrl: movie.posterUrl,
+                  name: movie.title,
+                  genres: movie.genres,
+                  year: movie.year,
+                  price: 15,
+                  dateOfPurchase: Date.now(),
+                })
+              })
+            })
+            .catch(error => console.error(error));
+        })
+          .catch(error => console.error(error));
+      </script>
+      <% } %>

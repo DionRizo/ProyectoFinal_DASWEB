@@ -1,0 +1,90 @@
+<% if (user) { %>
+<span id="currentUser" hidden><%= user.id %></span>
+<% } %>
+
+<div class="container">
+    <p style="font-size: 30px; margin-top: 10px;">
+        Profile: <%= user.name %>
+    </p>
+    <p>
+        <b>ID: </b><%= user.id %><br>
+        <b>Email: </b><%= user.email %><br>
+        <b>Registered on: </b><%= user.date %><br>
+        <% if (user.administrator == true) { %>
+            <b>Administrator: </b>Yes
+        <% } %>
+    </p>
+    <a href="/" class="btn btn-primary">Back to home</a>
+    <a href="/users/logout" class="btn btn-danger">Logout</a>
+    <hr class="my-3" style="margin-top: 5px;">
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Poster</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Type of purchase</th>
+                    <th scope="col">Date of purchase</th>
+                    <th scope="col">Payment</th>
+                </tr>
+            </thead>
+            <tbody id="orders-container">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+async function renderPastOrders(user) {
+    const response = await fetch("/users/" + user + "/pastOrders");
+    const orders = await response.json();
+
+    const ordersContainer = document.getElementById("orders-container");
+    ordersContainer.innerHTML = "";
+
+    for (const order of orders) {
+        const row = addOrder(order);
+        ordersContainer.appendChild(row);
+    }
+}
+
+function createElement(tag, attributes = {}, innerHTML = "") {
+    const element = document.createElement(tag);
+    for (const [key, value] of Object.entries(attributes)) {
+        element.setAttribute(key, value);
+    }
+    element.innerHTML = innerHTML;
+    return element;
+}
+
+function addOrder(order) {
+    const tr = createElement("tr", { "id": order.name });
+
+    const tdPoster = createElement("td");
+    const imgPoster = createElement("img", { src: order.posterUrl, style: "width: 120px;" });
+    tdPoster.appendChild(imgPoster);
+
+    const tdTitle = createElement("td", {}, order.name);
+    const tdYear = createElement("td", {}, order.year);
+    const tdOrderType = createElement("td", {}, order.orderType);
+    const tdDateOfPurchase = createElement("td", {}, order.dateOfPurchase);
+    const tdPrice = createElement("td", {}, order.price);
+
+    const elements = [tdPoster, tdTitle, tdYear, tdOrderType, tdDateOfPurchase, tdPrice];
+    elements.forEach((element) => {
+        tr.appendChild(element);
+    });
+
+    return tr;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const user = document.getElementById("currentUser").textContent;
+    console.log("Currently logged in user: " + user);
+    renderPastOrders(user);
+});
+
+</script>

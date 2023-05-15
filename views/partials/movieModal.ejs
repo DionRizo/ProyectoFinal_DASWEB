@@ -1,0 +1,46 @@
+<div class="modal fade" id="modalPelicula" tabindex="-1" aria-labelledby="modalPeliculaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="modalPeliculaLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    style="background-color: white;"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <div class="row">
+                    <div class="col-sm text-center align-self-center">
+                        <div class="col">
+                            <iframe id="modal-video" width="560" height="315" src="" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col-sm info">
+                        <div class="col">
+                            <p hidden><b>ID:</b> 
+                            <p><b>Title:</b> <span id="modal-titulo"></span></p>
+                            <p><b>Actors:</b> <span id="modal-actores"></span></p>
+                            <p><b>Director:</b> <span id="modal-director"></span></p>
+                            <p><b>Year:</b> <span id="modal-año"></span></p>
+                            <p><b>Genre: </b> <span id="modal-generos"></span></p>
+                            <p><b>Overview:</b> <span id="modal-sinopsis"></span></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer bg-light">
+                        <% if (user) { %>
+                            <a id="rental-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addedToCartModal">Rent<span id="modal-id-rental" hidden></span></a>
+                            <a id="buy-button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addedToCartModal">Buy<span id="modal-id-purchase" hidden></span></a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <% } else { %>
+                            <a id="rental-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addedToCartModal" hidden>Rent<span id="modal-id-rental" hidden></span></a>
+                            <a id="buy-button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addedToCartModal" hidden>Buy<span id="modal-id-purchase" hidden></span></a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" hidenn>Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">You must be logged in to buy/rent movies</button>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

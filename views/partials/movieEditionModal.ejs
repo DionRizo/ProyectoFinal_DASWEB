@@ -1,0 +1,57 @@
+<div class="modal fade" id="movieEditionModal" tabindex="-1" role="dialog" aria-labelledby=" movieEditionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="movieEditionModalLabel">Editing movie</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editMovieForm">
+                    <input type="hidden" id="editMovieId">
+                    <!-- Add other input fields for movie details -->
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label for="editMoviePosterUrl"><b>Poster</b></label>
+                            <input type="text" class="form-control" id="editMoviePosterUrl" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieTitle"><b>Title</b></label>
+                            <input type="text" class="form-control" id="editMovieTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieYear"><b>Year</b></label>
+                            <input type="text" class="form-control" id="editMovieYear" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieDirector"><b>Director</b></label>
+                            <input type="text" class="form-control" id="editMovieDirector" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieActors"><b>Actors</b></label>
+                            <input type="text" class="form-control" id="editMovieActors" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieGenres"><b>Genres</b></label>
+                            <input type="text" class="form-control" id="editMovieGenres" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieSynopsis"><b>Overview</b></label>
+                            <input type="text" class="form-control" id="editMovieSynopsis" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editMovieTrailerUrl"><b>Trailer URL</b></label>
+                            <input type="text" class="form-control" id="editMovieTrailerUrl" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" id="confirmMovieEdit">Confirm edit</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+<%- include('./partials/addedToCartModal') %>
+
+    <div class="container">
+        <p style="font-size: 30px; margin-top: 10px;">Search</p>
+        <hr class="my-3" style="margin-top: 5px;">
+
+        <form class="d-flex align-items-center form-search w-100" style="padding-bottom: 10px;">
+            <div class=" input-group">
+                <button id="dropdownButton" class="btn btn-light dropdown-toggle shadow-0" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false" style="padding-bottom: 0.4rem;"><i
+                        class="bi bi-search" style="padding-right: 5px;"></i>All</button>
+                <ul class="dropdown-menu fa-ul bg-light">
+                    <li class="bg-light">
+                        <a class="dropdown-item text-white" href="#"><i class="bi bi-search"
+                                style="padding-right: 5px;"></i>All</a>
+                    </li>
+                    <li class="bg-light">
+                        <a class="dropdown-item text-white" href="#"><i class="bi bi-fire"
+                                style="padding-right: 5px;"></i>Action</a>
+                    </li>
+                    <li class="bg-light">
+                        <a class="dropdown-item text-white" href="#"><i class="bi bi-shield-fill"
+                                style="padding-right: 5px;"></i>Adventure</a>
+                    </li>
+                    <li class="bg-light">
+                        <a class="dropdown-item text-white" href="#"><i class="bi bi-emoji-laughing-fill"
+                                style="padding-right: 5px;"></i>Comedy</a>
+                    </li>
+                    <li class="bg-light">
+                        <a class="dropdown-item text-white" href="#"><i class="bi bi-emoji-frown-fill"
+                                style="padding-right: 5px;"></i>Horror</a>
+                    </li>
+                    <li class="bg-light">
+                        <a class="dropdown-item text-white" href="#"><i class="bi bi-rocket-takeoff"
+                                style="padding-right: 5px;"></i>Sci-Fi</a>
+                    </li>
+                </ul>
+                <input id="movieSearchBar" type="search" class="form-control" placeholder="Search movie by title..."
+                    aria-label="Search movies..." />
+            </div>
+            <a href="#!" id="searchButton"><i class="bi bi-search ms-2"></i></i></a>
+        </form>
+
+        <div id="search-table" class="table-responsive" hidden>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Poster</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Genres</th>
+                        <th scope="col">Overview</th>
+                        <th scope="col">Actors</th>
+                        <th scope="col">Directors</th>
+                    </tr>
+                </thead>
+                <tbody id="search-container">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        async function renderMovies(data, title, genre) {
+            try {
+                console.log("Data");
+                console.log(data);
+                const movies = data;
+                const searchTable = document.getElementById("search-table");
+                searchTable.hidden = false;
+
+                const moviesContainer = document.getElementById("search-container");
+                moviesContainer.innerHTML = "";
+
+                if (movies.message) {
+                    const row = createElement("tr");
+                    const td = createElement("td", { colspan: 7 }, `No movies with the title '${title}' found. Please try again.`);
+                    row.appendChild(td);
+                    moviesContainer.appendChild(row);
+                    return;
+                }
+
+                for (const movie of movies) {
+                    const row = addMovieRow(movie);
+                    moviesContainer.appendChild(row);
+                }
+                console.log("searchView.js: Búsqueda terminada")
+            } catch (error) {
+                console.error('Error al realizar la búsqueda:', error);
+            }
+        }
+
+        function createElement(tag, attributes = {}, innerHTML = "") {
+            const element = document.createElement(tag);
+            for (const [key, value] of Object.entries(attributes)) {
+                element.setAttribute(key, value);
+            }
+            element.innerHTML = innerHTML;
+            return element;
+        }
+
+        function addMovieRow(movie) {
+            const tr = createElement("tr", { "id": movie._id });
+
+            const tdPoster = createElement("td");
+            const imgPoster = createElement("img", { src: movie.posterUrl, style: "width: 120px;" });
+            tdPoster.appendChild(imgPoster);
+
+            const tdTitle = createElement("td", {}, movie.title);
+            const tdYear = createElement("td", {}, movie.year);
+            const tdGenres = createElement("td", {}, movie.genres);
+            const tdSynopsis = createElement("td", {}, movie.synopsis);
+            const tdActors = createElement("td", {}, movie.actors);
+            const tdDirector = createElement("td", {}, movie.director);
+
+            const elements = [tdPoster, tdTitle, tdYear, tdGenres, tdSynopsis, tdActors, tdDirector];
+            elements.forEach((element) => {
+                tr.appendChild(element);
+            });
+
+            return tr;
+        }
+
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', event => {
+                let htmlContent = event.target.innerHTML;
+                document.getElementById('dropdownButton').innerHTML = htmlContent;
+            });
+        });
+
+        document.getElementById('searchButton').addEventListener('click', function () {
+            const genre = document.getElementById('dropdownButton').innerText;
+            const title = document.getElementById('movieSearchBar').value;
+            fetch(`/search/${genre}/${title}`)
+                .then(response => response.json())
+                .then(data => {
+                    renderMovies(data, title, genre);
+                })
+                .catch(error => console.error(error));
+        });
+
+    </script>

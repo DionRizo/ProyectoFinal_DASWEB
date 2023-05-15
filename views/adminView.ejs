@@ -1,0 +1,55 @@
+<%- include('./partials/movieAddModal') %>
+<%- include('./partials/movieDeletionModal') %>
+<%- include('./partials/movieEditionModal') %>
+<%- include('./partials/userDeletionModal') %>
+
+<div class="container">
+    <p style="font-size: 30px; margin-top: 10px;">Movie administration</p>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#movieAddModal">Add movie</button>
+    <hr class="my-3" style="margin-top: 5px;">
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Poster</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Director</th>
+                    <th scope="col">Actors</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Synopsis</th>
+                    <th scope="col">Trailer URL</th>
+                    <th scope="col">Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody id="movies-container">
+
+            </tbody>
+        </table>
+    </div>
+
+    <p style="font-size: 30px; margin-top: 10px;">Users administration</p>
+    <hr class="my-3" style="margin-top: 5px;">
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Registered on</th>
+                    <th scope="col">Administrator?</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="users-container">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="adminController.js"></script>
+<script src="codesController.js"></script>
+<script src="usersController.js"></script>

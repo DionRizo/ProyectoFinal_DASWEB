@@ -1,150 +1,64 @@
-const express = require("express");
-const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
-const path = require("path");
-const bodyParser = require("body-parser");
-const User = require("./app/models/User");
-const indexRoutes = require("./app/routes/indexRoutes");
-const adminRoutes = require("./app/routes/adminRoutes");
-const storesRoutes = require("./app/routes/storesRoutes");
-const { login } = require("./app/utils/global");
+const express = require('express');
+const path = require('path');
+const expressLayouts = require('express-ejs-layouts');
+const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
 
+const app = express();
+app.use(express.static('public'));
+app.use(express.static('controllers'));
 
-mongoose.connect("mongodb+srv://CinemaSurfAdmin:giq1pqvGDDFrDaek@cinemasurfdb.yqvttyu.mongodb.net/movies", { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("Connected to MongoDB successfully!");
-        const app = express()
-        app.use(express.static('app'));
-        app.use(express.json());
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: false }));
-        app.use("/index", indexRoutes);
-        app.use("/admin", adminRoutes);
-        app.use("/stores", storesRoutes);
+// Passport config
+require(('./config/passport'))(passport);
 
-        app.get("/", (req, res) => {
-            res.sendFile(__dirname + "/app/views/pages/index.html")
-        });
+// DB Config
+const db = require(path.join(__dirname, '/config/keys')).MongoURI;
 
-        app.get("/stores", (req, res) => {
-            res.sendFile(__dirname + "/app/views/pages/sucursales.html")
-        });
+//connect to Mongo
+mongoose.connect(db, { useNewUrlParser: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
 
-        app.get("/admin", (req, res) => {
-            res.sendFile(__dirname + "/app/views/pages/admin.html")
-        });
+// EJS
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
 
-        app.get("/cart", (req, res) => {
-            res.sendFile(__dirname + "/app/views/pages/carrito.html")
-        });
+// BodyParser
+app.use(express.urlencoded({ extended: false }));
 
-        app.post('/register', async (req, res) => {
-            console.log(req.body);
-            console.log("app.js: admin");
-            const {username, password} = req.body;
-            const user = new User({username, password})
+// Express Session
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+}));
 
-            try {
-                await user.save();
-                const userLogin = await login(username, password);
-                console.log({userLogin});
-                
-                if (!userLogin) {
-                    console.log("No se pudo autenticar al usuario recien registrado.");
-                    res.status(500).send("Usuario o contraseña incorrectos.");
-                } else {
-                    console.log("Usuario registrado y autenticado satisfactoriamente.");
-                    res.status(200).send({message:"Usuario registrado y autenticado satisfactoriamente.", user:userLogin});
-                }
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
-            } catch (err) {
-                console.log(err);
-                res.status(500).send("Error registrando al nuevo usuario, por favor intente de nuevo.");
-            }
-        });
+// Connect Flash
+app.use(flash());
 
-        app.post('/authenticate', async (req, res) => {
-            const {username, password} = req.body;
-            
-            const user = await login(username, password);
-            
-            if (!user) {
-                res.status(500).send("Usuario o contraseña incorrectos.");
-            } else {
-                res.status(200).send({message:"Usuario autenticado satisfactoriamente.", user});
-            }
+// Global Vars
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
+    next();
+});
 
-           
-        });
+// Routes
+app.use('/', require(path.join(__dirname, '/routes/indexRoute')));
+app.use('/admin', require(path.join(__dirname, '/routes/adminRoute')));
+app.use('/stores', require(path.join(__dirname, '/routes/storesRoute')));
+app.use('/cart', require(path.join(__dirname, '/routes/shoppingCartRoute')));
+app.use('/users', require(path.join(__dirname, '/routes/usersRoute')));
+app.use('/search', require(path.join(__dirname, '/routes/searchRoute')));
 
-        app.listen(3000, () => {
-            console.log("Server has started!")
-        });
-    })
-    .catch(err => console.error("Failed to connect to MongoDB: ", err));
+const PORT = process.env.PORT || 4000;
 
-/*
-mongoose
-    .connect("mongodb+srv://CinemaSurfAdmin:giq1pqvGDDFrDaek@cinemasurfdb.yqvttyu.mongodb.net/movies", { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        const app = express()
-        app.use(express.static('app'));
-        app.use(express.json());
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: false }));
-        app.use("/index", indexRoutes);
-        app.use("/admin", adminRoutes);
-        app.use("/stores", storesRoutes);
-
-        app.get("/", (req, res) => {
-            res.sendFile(__dirname + "/app/views/pages/index.html")
-        });
-
-        app.get("/stores", (req, res) => {
-            res.sendFile(__dirname + "/app/views/pages/sucursales.html")
-        });
-
-        app.get("/admin", (req, res) => {
-            res.sendFile(__dirname + "/app/views/pages/admin.html")
-        });
-
-        app.post('/register', async (req, res) => {
-            const {username, password} = req.body;
-            const user = new User({username, password});
-
-            try {
-                await user.save();
-                res.status(200).send("Usuario registrado satisfactoriamente.");
-            } catch (err) {
-                res.status(500).send("Error registrando al nuevo usuario, por favor intente de nuevo.");
-            }
-        });
-
-        app.post('/authenticate', async (req, res) => {
-            const {username, password} = req.body;
-
-            try {
-                const user = await User.findOne({username});
-                if (!user) {
-                    res.status(500).send("Usuario no registrado.");
-                } else {
-                    user.isCorrectPassword(password, (err, result) => {
-                        if (err) {
-                            res.status(500).send("Error al autenticar al usuario, por favor intente de nuevo.");
-                        } else if (result) {
-                            res.status(200).send("Usuario autenticado satisfactoriamente.");
-                        } else {
-                            res.status(500).send("Usuario o contraseña incorrectos.");
-                        }
-                    });
-                }
-            } catch (err) {
-                res.status(500).send("Error al autenticar al usuario, por favor intente de nuevo.");
-            }
-        });
-
-        app.listen(3000, () => {
-            console.log("Server has started!")
-        });
-    });
-*/
+app.listen(PORT, console.log(`App listening on port ${PORT}`));

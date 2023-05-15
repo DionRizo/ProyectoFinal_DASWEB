@@ -1,0 +1,57 @@
+<div class="modal fade" id="movieAddModal" tabindex="-1" role="dialog" aria-labelledby=" movieAddModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="movieAddModalLabel">Adding movie</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addMovieForm">
+                    <input type="hidden" id="addMovieId">
+                    <!-- Add other input fields for movie details -->
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label for="addMoviePosterUrl"><b>Poster</b></label>
+                            <input type="text" class="form-control" id="addMoviePosterUrl" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addMovieTitle"><b>Title</b></label>
+                            <input type="text" class="form-control" id="addMovieTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addMovieYear"><b>Year</b></label>
+                            <input type="text" class="form-control" id="addMovieYear" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addMovieDirector"><b>Director</b></label>
+                            <input type="text" class="form-control" id="addMovieDirector" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addMovieActors"><b>Actors</b></label>
+                            <input type="text" class="form-control" id="addMovieActors" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addMovieGenres"><b>Genres</b></label>
+                            <input type="text" class="form-control" id="addMovieGenres" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addMovieSynopsis"><b>Overview</b></label>
+                            <input type="text" class="form-control" id="addMovieSynopsis" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="addMovieTrailerUrl"><b>Trailer URL</b></label>
+                            <input type="text" class="form-control" id="addMovieTrailerUrl" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmMovieAdd">Add movie</button>
+            </div>
+        </div>
+    </div>
+</div>

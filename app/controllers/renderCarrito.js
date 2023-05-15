@@ -1,3 +1,0 @@
-initCart();
-
-renderItemsCart();
